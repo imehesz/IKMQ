@@ -1,0 +1,7 @@
+*.zip
+files/*
+development.php
+production.php
+assets
+protected/runtime
+protected/data
