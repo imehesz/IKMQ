@@ -5,3 +5,5 @@ production.php
 assets
 protected/runtime
 protected/data
+*.swp
+*.swo
