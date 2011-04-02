@@ -16,9 +16,18 @@ $this->breadcrumbs=array(
 				}while( ! isset( $movie->quotes[ $rand_qoute ] ) );
 		?>
 		<tr class="">
-			<td><?php echo $movie->quotes[ $rand_qoute ]->quote; ?></td>
-			<td><?php echo $model->movies_shuffled[$rand_movie_cnt++]->title; ?>
-			<?php echo $model->movies_shuffled[$rand_movie_cnt++]->title; ?></td>
+			<td style="font-size:20px;width:550px;"><?php echo $movie->quotes[ $rand_qoute ]->quote; ?></td>
+			<td><?php 
+					echo 
+						CHtml::image( 
+							Yii::app()->request->baseUrl . 
+								'/image.php?width=50&height=75&image='. Yii::app()->request->baseUrl . '/' . Yii::app()->params['moviescreenshots'] . $model->movies_shuffled[$rand_movie_cnt]->pic, null, array( 'title' => $model->movies_shuffled[$rand_movie_cnt++]->title ) ) . ' '; 
+
+					echo 
+						CHtml::image( 
+							Yii::app()->request->baseUrl . 
+								'/image.php?width=50&height=75&image='. Yii::app()->request->baseUrl . '/' . Yii::app()->params['moviescreenshots'] . $model->movies_shuffled[$rand_movie_cnt]->pic, null, array( 'title' => $model->movies_shuffled[$rand_movie_cnt++]->title ) );
+				?></td>
 		</tr>
 	<?php endfor; ?>
 	</table>
