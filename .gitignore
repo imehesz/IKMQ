@@ -7,3 +7,4 @@ protected/runtime
 protected/data
 *.swp
 *.swo
+*.tar.gz
