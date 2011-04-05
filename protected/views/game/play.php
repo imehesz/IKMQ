@@ -91,6 +91,19 @@ $this->breadcrumbs=array(
 	</table>
 	<?php echo CHtml::endForm(); ?>
 
+	<?php
+		$this->widget(
+				'ext.ETooltip.ETooltip', 
+				array(
+					"selector" => "#quote-answer-form img[title]",
+					"tooltip"=>array(
+						'opacity'	=> 1
+						),
+					'image'	=> 'black_small.png'
+				)
+		);
+	?>
+
 	<?php echo CHtml::button( '  GO  ', array( 'id' => 'gobutton' ) );?>
 </div>
 
