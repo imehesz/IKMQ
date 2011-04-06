@@ -9,7 +9,7 @@ class GameController extends Controller
 
 	public function actionPlay()
 	{
-		$level = 2;
+		$level = 3;
 		$game = new Quote;
 		$game->buildGame( $level );
 		$this->render('play', array( 'model' => $game ) );

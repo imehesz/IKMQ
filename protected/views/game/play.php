@@ -8,11 +8,17 @@ $this->breadcrumbs=array(
 
 ?>
 <div><strong>GAME STATS</strong></div> 
-<div><strong>Level:</strong> <?php echo $model->level; ?> <strong>Answered </strong><span id="answered_so_far">0</span>/<?php echo $model->level; ?></div>
+<div><strong>Level:</strong> <?php echo $model->level; ?> <strong>Answered </strong><span id="answered_so_far">0</span>/<?php echo $model->level; ?> - <span id="preparation-countdown"><strong>Wait</strong> <span>10</span> seconds to start <strong>or</strong> <?php echo CHtml::button( '  Start NOW  ', array( 'id' => 'startnow', 'onclick' => 'javascript:showQuotes();' ) );?></span>
+
+	<span id="final-countdown" style="display:none;"><strong>Wait</strong> <span><?php echo $model->level*5?></span> second <strong>or</strong> send your answers <?php echo CHtml::button( '  NOW  ', array( 'id' => 'gobutton' ) );?>
+	</span>
+</div>
 
 <div>
 	<?php echo CHtml::beginForm( null, null, array( 'id' => 'quote-answer-form' ) ); ?>
-	<table>
+	<table id="quote-table">
+	<div id="quote-cover" style="background-color:#fff;width:500px;position:absolute;">
+	</div>
 	<?php $rand_movie_cnt=0; for( $i=0; $i < $model->level ; $i++ ): ?>
 		<?php		
 				$movie = $model->movies[$i];
@@ -103,22 +109,81 @@ $this->breadcrumbs=array(
 				)
 		);
 	?>
-
-	<?php echo CHtml::button( '  GO  ', array( 'id' => 'gobutton' ) );?>
 </div>
 
 <script language="javascript">
+	var showQuotes = function(){
+		jQuery( '#preparation-countdown' ).hide();
+		jQuery( '#final-countdown' ).show();
+		jQuery( '.td-quote' ).css({'color':'#555'});
+		jQuery( '#quote-cover' ).hide();
+	}
+
+
 	jQuery(document).ready( function(){
+		var timerstop = false;
+		var quote_cover_height = jQuery( '#quote-table' ).height();
+		var sec=10;
+		var finalcnt_down=<?php echo ($model->level*5); ?>;
+
+		jQuery( '#quote-cover' ).height( quote_cover_height );
+
+		var timer = setInterval(function(){
+			jQuery( '#preparation-countdown span' ).text( sec-- );
+			if( sec < 5 )
+			{
+				jQuery( '#preparation-countdown span' ).css({'color':'#f00'});
+			}
+
+			if( sec < 0 )
+			{
+				showQuotes();
+				var timer2 = setInterval(function(){
+					jQuery('#final-countdown span').text( finalcnt_down-- );
+					if( finalcnt_down < 5 )
+					{
+						jQuery( '#final-countdown span' ).css({'color':'#f00'});
+					}
+
+					if( finalcnt_down < 0 )
+					{
+						clearInterval( timer2 );
+						sendAnswers();
+					}
+
+					if( timerstop == true )
+					{
+						clearInterval( timer2 );
+					}
+				}, 1000);
+				clearInterval( timer );
+			}
+		}, 1000);
+
+		var sendAnswers = function(){
+			form_values = jQuery('#quote-answer-form').serialize();
+			jQuery.ajax({
+				'url': gamecontrollerpath + '&' + form_values,
+				'success': function(data){
+					if( data == 0 )
+					{
+						alert( 'Congrats! You answered all right!' );
+					}
+					else
+					{
+						alert( 'Sorry, you answered ' + data + ' wrong! Keep going!' );
+					}
+
+					location.href="<?php echo Yii::app()->controller->createUrl( '/game/play' );?>";
+				},
+				'cache': false
+			});
+		}
+
 		jQuery('body').delegate(
 			'#gobutton', 'click', function(){
-				form_values = jQuery('#quote-answer-form').serialize();
-				jQuery.ajax({
-					'url': gamecontrollerpath + '&' + form_values,
-					'success': function(data){
-						alert( 'You answered ' + data + ' wrong!' );
-					},
-					'cache': false
-				});
+				timerstop = true;
+				sendAnswers();
 			}
 		);
 	});
