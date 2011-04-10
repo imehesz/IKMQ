@@ -14,6 +14,15 @@ class Controller extends CController
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
 	public $menu=array();
+
+    /**
+     * anonymous  
+     * 
+     * @var mixed
+     * @access public
+     */
+    public $anonymous;
+
 	/**
 	 * @var array the breadcrumbs of the current page. The value of this property will
 	 * be assigned to {@link CBreadcrumbs::links}. Please refer to {@link CBreadcrumbs::links}
@@ -24,6 +33,18 @@ class Controller extends CController
 	public function init()
 	{
 		parent::init();
+
+        // TODO this is just temporary until we come up with a 
+        // better way to track users ...
+        $anonymous = AnonymousUser::model()->find( 'session_id=:session_id', array( 'session_id' => Yii::app()->session->sessionID ) );
+
+        if( ! $anonymous )
+        {
+            $anonymous = new AnonymousUser();
+            $anonymous->save();
+        }
+        $this->anonymous = $anonymous;
+
 		Yii::app()->clientScript->registerCoreScript('jquery');
 	}
 }

@@ -1,7 +1,25 @@
 <?php
 
+/**
+ * GameController 
+ * 
+ * @uses Controller
+ * @package 
+ * @version $id$
+ * @copyright Clevertech
+ * @author Imre Mehesz <imre@clevertech.biz> 
+ * @license PHP Version 5 {@link http://www.php.net/license/3_01.txt}
+ */
 class GameController extends Controller
 {
+    /**
+     * level 
+     * 
+     * @var mixed
+     * @access public
+     */
+    public $level;
+
 	public function actionIndex()
 	{
 		$this->render('index');
@@ -9,9 +27,17 @@ class GameController extends Controller
 
 	public function actionPlay()
 	{
-		$level = 3;
+		$level = $this->anonymous->level;
+        $this->level = $level;
+
 		$game = new Quote;
 		$game->buildGame( $level );
+
+        if( ! sizeof( $game->movies ) )
+        {
+            throw new CHttpException( '500', 'Oops ... seems like we have no movies in the DB :/' );
+        }
+
 		$this->render('play', array( 'model' => $game ) );
 	}
 
@@ -49,7 +75,7 @@ class GameController extends Controller
 
 				if( $answer_movie_id == Quote::model()->findByPk( $quote_id )->movie_id )
 				{
-					$points++; // TODO save this somewhere ...
+					$points += $this->anonymous->level;
 				}
 				else
 				{
@@ -57,6 +83,11 @@ class GameController extends Controller
 				}
 			}
 		}
+
+        // if no bad answers, we increase the level
+        $bad_answers == 0 ? 
+            $this->anonymous->updateLevelScore( ($this->anonymous->level+1), $points ) : 
+            $this->anonymous->updateLevelScore( $this->anonymous->level, $points );
 
 		echo $bad_answers;
 		die();
