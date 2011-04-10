@@ -14,8 +14,8 @@ class m110330_235808_quotes_table extends CDbMigration
 			'created' 	=> 'integer'
 		));
 
-		// $this->createIndex( 'fk_movie_id', $this->table, 'movie_id' );
-		// $this->addForeignKey('fk_movie_id', $this->table, 'movie_id', 'movies', 'id', 'NO ACTION', 'NO ACTION');
+		$this->createIndex( 'fk_movie_id', $this->table, 'movie_id' );
+		$this->addForeignKey('fk_movie_id', $this->table, 'movie_id', 'movies', 'id', 'NO ACTION', 'NO ACTION');
 	}
 
 	public function down()
