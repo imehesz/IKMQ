@@ -7,17 +7,11 @@ $this->breadcrumbs=array(
 	Yii::app()->clientScript->registerScript( 'gamecontrollerpath', "var gamecontrollerpath='" . Yii::app()->controller->createUrl( '/game/ajaxcheck' ) . "'", CClientScript::POS_HEAD );
 
 ?>
-<div><strong>GAME STATS</strong></div> 
-<div><strong>Level:</strong> <?php echo $model->level; ?> <strong>Answered </strong><span id="answered_so_far">0</span>/<?php echo $model->level; ?> - <span id="preparation-countdown"><strong>Wait</strong> <span>10</span> seconds to start <strong>or</strong> <?php echo CHtml::button( '  Start NOW  ', array( 'id' => 'startnow', 'onclick' => 'javascript:showQuotes();' ) );?></span>
-
-	<span id="final-countdown" style="display:none;"><strong>Wait</strong> <span><?php echo $model->level*5?></span> second <strong>or</strong> send your answers <?php echo CHtml::button( '  NOW  ', array( 'id' => 'gobutton' ) );?>
-	</span>
-</div>
 
 <div>
 	<?php echo CHtml::beginForm( null, null, array( 'id' => 'quote-answer-form' ) ); ?>
 	<table id="quote-table">
-	<div id="quote-cover" style="background-color:#fff;width:500px;position:absolute;">
+	<div id="quote-cover">
 	</div>
 	<?php $rand_movie_cnt=0; for( $i=0; $i < $model->level ; $i++ ): ?>
 		<?php		
@@ -58,7 +52,7 @@ $this->breadcrumbs=array(
 				<?php $this->endWidget(); ?>
 				<?php echo CHtml::hiddenField( 'answer_' . $i, 0 ); ?>
 			</td>
-			<td>
+			<td width="150">
 				<?php 
 				//some draggable object
 				$this->beginWidget('zii.widgets.jui.CJuiDraggable',

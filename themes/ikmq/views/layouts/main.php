@@ -25,10 +25,16 @@
 </div>
 
 <nav>
-		<?php $this->widget('zii.widgets.CMenu',array(
+		<?php 
+            $play_item = 
+                ( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'play' ) ?
+                array( 'label' => 'Pause', 'url' => array( '/game/index' ) ) :
+                array( 'label' => 'Play', 'url' => array( '/game/play' ) );
+
+            $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'Play', 'url'=>array('/game/play')),
+                $play_item,
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
@@ -70,6 +76,23 @@
 	</section>
 
 <aside>
+<?php if( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'play' ) : ?>
+    <h2>Game</h2>
+    <ul>
+        <li><b>Your Name:</b> <?php echo $this->anonymous->name ;?></li>
+        <li><b>Level:</b> <?php echo $this->level ;?></li>
+        <li><b>Score:</b> <?php echo $this->anonymous->score; ?></li>
+        <li><b title="Answered in this round">Answered:</b> <span id="answered_so_far">0</span>/<?php echo $this->level; ?></li>
+        <li id="preparation-countdown">
+            <b>Wait</b> <span>10</span> seconds to start <?php /*<b>or</b>
+            <?php echo CHtml::button( '  Start NOW  ', array( 'id' => 'startnow', 'onclick' => 'javascript:showQuotes();' ) );?>
+            */ ?>
+        </li>
+        <li id="final-countdown" style="display:none;">
+            <b>Wait</b> <span><?php echo $this->level*5; ?></span> seconds <b>or</b> send your answers <?php echo CHtml::button( ' NOW ', array( 'id' => 'gobutton' ) ); ?>
+        </li>
+    </ul>
+<?php endif; ?>
 <h2>Archives</h2>
 <ul>
 <li><a href="#">February 2010</a></li>

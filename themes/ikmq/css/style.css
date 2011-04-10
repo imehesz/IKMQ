@@ -102,7 +102,7 @@ display: block;
 
 #main-content, .hfeed {
 padding: 10px 20px 20px 40px;
-width: 600px;
+width: 620px;
 background: #fff;
 
 			-moz-border-radius-bottomleft: 0.8em;
@@ -116,7 +116,7 @@ display: block;
 
 aside {
 padding: 10px 20px 20px 40px;
-width: 240px;
+width: 220px;
 background: #fff;
 
 			-webkit-border-bottom-right-radius: 0.8em;
@@ -187,3 +187,29 @@ float: left;
 .floatright {
 float: right;
 }
+
+#quote-table
+{
+    margin-top: 25px;
+}
+
+        .td-quote
+        {
+            font-size:20px;
+            width:650px;
+            color: #fff;
+        }
+
+        .movie-droppable
+        {
+            width:50px;
+            height:75px;
+            background-color:#777;
+        }
+
+        #quote-cover
+        {
+            background-color:#fff;
+            width:450px;
+            position:absolute;
+        }
