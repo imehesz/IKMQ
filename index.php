@@ -14,6 +14,9 @@ if( YII_DEBUG )
 	error_reporting(E_ALL); 
 	ini_set("display_errors", 1); 
 }
+// cool random session generator ...
+ini_set("session.entropy_file", "/dev/urandom");
+ini_set("session.entropy_length", "512");
 
 require_once($yii);
 Yii::createWebApplication($config)->run();
