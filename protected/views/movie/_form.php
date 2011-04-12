@@ -11,13 +11,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'title',array( 'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'title'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'pic'); ?>
-		<?php echo $form->textField($model,'pic',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'pic',array( 'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'pic'); ?>
 	</div>
 
@@ -27,10 +27,18 @@
 		<?php echo $form->error($model,'year'); ?>
 	</div>
 
+<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'created'); ?>
 		<?php echo $form->textField($model,'created'); ?>
 		<?php echo $form->error($model,'created'); ?>
+	</div>
+*/
+?>
+	<div class="row">
+		<?php echo $form->labelEx( $model, 'firstquote' ); ?>
+		<?php echo $form->textArea( $model, 'firstquote', array( 'rows' => 2, 'cols' => 35 ) ); ?>
+		<?php echo $form->error( $model, 'firstquote' ); ?>
 	</div>
 
 	<div class="row buttons">

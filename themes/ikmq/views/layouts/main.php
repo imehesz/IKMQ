@@ -76,6 +76,13 @@
 	</section>
 
 <aside>
+<?php if( ! Yii::app()->user->isGuest  ) : ?>
+	<h2>Admin</h2>
+	<ul>
+		<li><?php echo CHtml::link( 'Add Movie', Yii::app()->controller->createUrl( 'movie/create' ) ); ?></li>
+	</ul>
+<?php endif; ?>
+
 <?php if( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'play' ) : ?>
     <h2>Game</h2>
     <ul>

@@ -11,6 +11,8 @@
  */
 class Movie extends CActiveRecord
 {
+	public $firstquote;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Movie the static model class
@@ -36,10 +38,11 @@ class Movie extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title', 'required'),
+			array('title,firstquote', 'required'),
+			array( 'firstquote', 'length', 'max' => 1000 ),
 			array('created', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
-			array('pic', 'length', 'max'=>100),
+			array('pic', 'length', 'max'=>255),
 			array('year', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -66,10 +69,11 @@ class Movie extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => 'Title',
-			'year' => 'Year',
-			'created' => 'Created',
+			'id' 			=> 'ID',
+			'title' 		=> 'Title',
+			'year' 			=> 'Year',
+			'created' 		=> 'Created',
+			'firstquote'	=> 'First Quote',
 		);
 	}
 
@@ -96,6 +100,18 @@ class Movie extends CActiveRecord
 
 	public function beforeSave()
 	{
+		if( $this->pic )
+		{
+			$img_file_name = MUtility::strToPretty( $this->title ) . '.jpg';
+			$img_path = YiiBase::getPathOfAlias( 'webroot' ) . '/' . Yii::app()->params['moviescreenshots'] . $img_file_name;
+			if( ! file_put_contents( $img_path, file_get_contents( $this->pic ) ) )
+			{
+				$this->addError( 'pic', 'Picture could not be uploaded :/' );
+				return false;
+			}
+			$this->pic = $img_file_name;
+		}
+
 		if( parent::beforeSave() )
 		{
 			if( $this->isNewRecord )
@@ -105,5 +121,16 @@ class Movie extends CActiveRecord
 
 			return true;
 		}
+	}
+
+	public function afterSave()
+	{
+		parent::afterSave();
+
+		$quote 				= new Quote;
+		$quote->movie_id	= $this->id; 
+		$quote->quote		= $this->firstquote;
+		$quote->save();
+		return true;
 	}
 }
