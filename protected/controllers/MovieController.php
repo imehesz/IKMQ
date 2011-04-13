@@ -27,7 +27,7 @@ class MovieController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'ajaxmovielist' ),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -172,5 +172,27 @@ class MovieController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	public function actionAjaxMovieList()
+	{
+		$arr = array();
+
+		$criteria = new CDbCriteria;
+		$criteria->select = array( 'id', 'title' );
+		$criteria->addsearchcondition( 'title', $_GET['term'] );
+		$criteria->limit = 15;
+		$data = Movie::model()->findAll( $criteria );
+
+		foreach( $data as $item )
+		{
+			$arr[] = array(
+				'id'	=> $item->id,
+				'value'	=> $item->title
+			);
+		}
+
+		echo CJSON::encode( $arr );
+		die();
 	}
 }

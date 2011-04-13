@@ -80,6 +80,7 @@
 	<h2>Admin</h2>
 	<ul>
 		<li><?php echo CHtml::link( 'Add Movie', Yii::app()->controller->createUrl( 'movie/create' ) ); ?></li>
+		<li><?php echo CHtml::link( 'Add Quote', Yii::app()->controller->createUrl( 'quote/create' ) ); ?></li>
 	</ul>
 <?php endif; ?>
 

@@ -70,7 +70,8 @@ class QuoteController extends Controller
 		{
 			$model->attributes=$_POST['Quote'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect( array( 'create' ) );
+				//$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
