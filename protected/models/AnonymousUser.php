@@ -122,7 +122,7 @@ class AnonymousUser extends CActiveRecord
     public function updateLevelScore( $newlevel, $newscore )
     {
         $this->level = $newlevel;
-        $this->score = $newscore;
+        $this->score = $this->score+$newscore;
         $this->updated = time();
 
         $this->update();

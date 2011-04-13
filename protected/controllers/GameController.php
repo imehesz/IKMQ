@@ -28,10 +28,16 @@ class GameController extends Controller
 	public function actionPlay()
 	{
 		$level = $this->anonymous->level;
-        $this->level = $level;
+
+        // our movies are limited, while the
+        // game is technically endless .. so we have to make sure
+        // that the GAME level can never surpass the 1/2 of the movies
+        // but the users level can!
+        $highest_game_level = Movie::model()->count() / 2;
+        $this->level = ( $level > $highest_game_level ) ? (int)$highest_game_level : $level;
 
 		$game = new Quote;
-		$game->buildGame( $level );
+		$game->buildGame( $this->level );
 
         if( ! sizeof( $game->movies ) )
         {

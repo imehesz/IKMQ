@@ -88,7 +88,7 @@
     <h2>Game</h2>
     <ul>
         <li><b>Your Name:</b> <?php echo $this->anonymous->name ;?></li>
-        <li><b>Level:</b> <?php echo $this->level ;?></li>
+        <li><b>Level:</b> <?php echo $this->anonymous->level ;?></li>
         <li><b>Score:</b> <?php echo $this->anonymous->score; ?></li>
         <li><b title="Answered in this round">Answered:</b> <span id="answered_so_far">0</span>/<?php echo $this->level; ?></li>
         <li id="preparation-countdown">
