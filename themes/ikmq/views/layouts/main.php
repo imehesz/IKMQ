@@ -12,6 +12,7 @@
 		<!--[if lte IE 7]>
 			<link rel="stylesheet" type="text/css" href="ie67hacks.css" />
 		<![endif]-->
+        <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ikmq.js"></script>
 </head>
 <body>
 <div>&nbsp;</div>
@@ -87,7 +88,14 @@
 <?php if( Yii::app()->controller->id == 'game' ) : ?>
     <h2>Game</h2>
     <ul>
-        <li><b>Your Name:</b> <?php echo $this->anonymous->name ;?></li>
+        <li><b>Your Name:</b> 
+            <span id="player-name-span-wrapper" title="click to edit"><?php echo $this->anonymous->name; ?></span>
+            <span id="player-name-input-wrapper" style="display:none;">
+                <?php echo CHtml::textField( 'player-new-name', $this->anonymous->name, array( 'size' => '10' ) ); ?>
+                <?php echo CHtml::button( 'Update', array( 'id' => 'player-update-button' ) ); ?>
+                <?php echo CHtml::button( 'Cancel', array( 'id' => 'player-cancel-button' ) ); ?>
+            </span>
+         </li>
         <li><b>Level:</b> <?php echo number_format( $this->anonymous->level );?></li>
         <li><b>Score:</b> <?php echo number_format( $this->anonymous->score ); ?></li>
 		<?php if( Yii::app()->controller->action->id == 'play' ) : ?>
