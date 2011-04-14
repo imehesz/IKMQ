@@ -198,6 +198,7 @@ float: right;
             font-size:20px;
             width:650px;
             color: #fff;
+			border-bottom: 1px solid #ddd;
         }
 
         .movie-droppable
@@ -213,3 +214,15 @@ float: right;
             width:450px;
             position:absolute;
         }
+
+.top5-player-name
+{
+	width: 125px;
+	float:left;
+}
+
+.top5-player-score
+{
+	text-align:right;
+	width:200px;
+}

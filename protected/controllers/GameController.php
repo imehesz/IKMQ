@@ -25,6 +25,11 @@ class GameController extends Controller
 		$this->render('index');
 	}
 
+	public function actionPause()
+	{
+		$this->render( 'pause' );
+	}
+
 	public function actionPlay()
 	{
 		$level = $this->anonymous->level;

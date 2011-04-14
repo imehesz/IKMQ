@@ -28,7 +28,7 @@
 		<?php 
             $play_item = 
                 ( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'play' ) ?
-                array( 'label' => 'Pause', 'url' => array( '/game/index' ) ) :
+                array( 'label' => 'Pause', 'url' => array( '/game/pause' ) ) :
                 array( 'label' => 'Play', 'url' => array( '/game/play' ) );
 
             $this->widget('zii.widgets.CMenu',array(
@@ -84,12 +84,13 @@
 	</ul>
 <?php endif; ?>
 
-<?php if( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'play' ) : ?>
+<?php if( Yii::app()->controller->id == 'game' ) : ?>
     <h2>Game</h2>
     <ul>
         <li><b>Your Name:</b> <?php echo $this->anonymous->name ;?></li>
-        <li><b>Level:</b> <?php echo $this->anonymous->level ;?></li>
-        <li><b>Score:</b> <?php echo $this->anonymous->score; ?></li>
+        <li><b>Level:</b> <?php echo number_format( $this->anonymous->level );?></li>
+        <li><b>Score:</b> <?php echo number_format( $this->anonymous->score ); ?></li>
+		<?php if( Yii::app()->controller->action->id == 'play' ) : ?>
         <li><b title="Answered in this round">Answered:</b> <span id="answered_so_far">0</span>/<?php echo $this->level; ?></li>
         <li id="preparation-countdown">
             <b>Wait</b> <span>10</span> seconds to start <?php /*<b>or</b>
@@ -99,23 +100,35 @@
         <li id="final-countdown" style="display:none;">
             <b>Wait</b> <span><?php echo $this->level*5; ?></span> seconds <b>or</b> send your answers <?php echo CHtml::button( ' NOW ', array( 'id' => 'gobutton' ) ); ?>
         </li>
+		<?php endif; ?>
     </ul>
 <?php endif; ?>
-<h2>Archives</h2>
+<h2>Top5 by Level</h2>
 <ul>
-<li><a href="#">February 2010</a></li>
-<li><a href="#">January 2010</a></li>
-<li><a href="#">December 2009</a></li>
+<?php 
+	$top5_level_players = AnonymousUser::model()->findAll( array( 'order' => 'level DESC', 'limit' => 5 ) );
+	if( $top5_level_players )
+	{
+		foreach( $top5_level_players as $player )
+		{
+			echo '<li><div class="top5-player-name">' . $player->name . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
+		}
+	}
+?>
 </ul>
 
-<br />
-
-<h2>Categories</h2>
+<h2>Top5 by Score</h2>
 <ul>
-<li><a href="#">Tutorials</a></li>
-<li><a href="#">Articles</a></li>
-<li><a href="#">Resources</a></li>
-<li><a href="#">Inspiration</a></li>
+<?php 
+	$top5_level_players = AnonymousUser::model()->findAll( array( 'order' => 'score DESC', 'limit' => 5 ) );
+	if( $top5_level_players )
+	{
+		foreach( $top5_level_players as $player )
+		{
+			echo '<li><div class="top5-player-name">' . $player->name . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
+		}
+	}
+?>
 </ul>
 <br />
 </aside>
