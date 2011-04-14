@@ -188,6 +188,11 @@ float: left;
 float: right;
 }
 
+p
+{
+	font-size: 20px;
+}
+
 #quote-table
 {
     margin-top: 25px;
