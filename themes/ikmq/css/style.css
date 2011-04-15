@@ -138,8 +138,8 @@ aside ul li {
 		border-bottom: 1px dotted #d9d9d9;
 }
 aside ul li a {
-padding: 10px 0px 10px 10px;
-display: block;
+/*padding: 10px 0px 10px 10px; 
+display: block; */
 		 font-weight: bold;
 }
 aside ul li a:hover {

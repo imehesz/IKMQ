@@ -1,5 +1,4 @@
 jQuery(document).ready(function(){
-//    alert( "yellow" );
     jQuery('body').delegate('#player-name-span-wrapper','click',function( obj ){
         jQuery('#player-name-span-wrapper').hide();
         jQuery('#player-name-input-wrapper').show();
@@ -25,6 +24,28 @@ alert( "Oops! Please try again :/" );
 }); 
 */
     });
+
+    jQuery('body').delegate('#player-update-button','click',function( obj ){
+		name = jQuery('#player-new-name').val();
+
+        jQuery.ajax({
+			url: gamepath + '/ajaxupdatename&name=' + name,
+			context: document.body,
+			success: function( data ){
+				if( data == 'success' )
+				{
+			        jQuery('#player-name-input-wrapper').hide();
+        			jQuery('#player-name-span-wrapper').html( name );
+        			jQuery('#player-name-span-wrapper').show();
+				}
+				else
+				{
+					alert( "Oops - please try again :/" );
+				}
+			}
+		});
+    });
+
 
     jQuery('body').delegate('#player-cancel-button','click',function( obj ){
         jQuery('#player-name-input-wrapper').hide();

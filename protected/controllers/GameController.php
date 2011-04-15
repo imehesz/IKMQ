@@ -130,4 +130,22 @@ class GameController extends Controller
 		);
 	}
 	*/
+
+	public function actionAjaxUpdateName()
+	{
+		$name = strip_tags( $_GET['name'] );
+
+		// now if we have a name we update our
+		// "anonymous" session name ...
+		$u = AnonymousUser::model()->find( 'session_id=:session_id', array( 'session_id' => Yii::app()->session->sessionID) );
+		if( $u )
+		{
+			$u->name = $name;
+			if( $u->save() )
+			{
+				die( 'success' );
+			}
+		}
+		die( 'fail' );
+	}
 }

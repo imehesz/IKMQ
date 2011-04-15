@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>HTML5 and CSS3 Layout</title>
+		<title><?php echo CHtml::encode( $this->pageTitle ); ?></title>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/form.css" />
 		<!--[if IE]>
@@ -89,12 +89,13 @@
     <h2>Game</h2>
     <ul>
         <li><b>Your Name:</b> 
-            <span id="player-name-span-wrapper" title="click to edit"><?php echo $this->anonymous->name; ?></span>
-            <span id="player-name-input-wrapper" style="display:none;">
+            <a href="javascript:void(0);" id="player-name-span-wrapper" title="click to edit"><?php echo $this->anonymous->name; ?></a>
+            <span id="player-name-input-wrapper" style="display:none;float:right;">
                 <?php echo CHtml::textField( 'player-new-name', $this->anonymous->name, array( 'size' => '10' ) ); ?>
-                <?php echo CHtml::button( 'Update', array( 'id' => 'player-update-button' ) ); ?>
-                <?php echo CHtml::button( 'Cancel', array( 'id' => 'player-cancel-button' ) ); ?>
+                <?php echo CHtml::button( 'Save', array( 'id' => 'player-update-button' ) ); ?>
+                <?php echo CHtml::button( 'Close', array( 'id' => 'player-cancel-button' ) ); ?>
             </span>
+			<div style="clear:both;"></div>
          </li>
         <li><b>Level:</b> <?php echo number_format( $this->anonymous->level );?></li>
         <li><b>Score:</b> <?php echo number_format( $this->anonymous->score ); ?></li>
@@ -119,21 +120,21 @@
 	{
 		foreach( $top5_level_players as $player )
 		{
-			echo '<li><div class="top5-player-name">' . $player->name . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
+			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( $player->name ) . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
 		}
 	}
 ?>
 </ul>
 
 <h2>Top5 by Score</h2>
-<ul>
+<ul class="something">
 <?php 
 	$top5_level_players = AnonymousUser::model()->findAll( array( 'order' => 'score DESC', 'limit' => 5 ) );
 	if( $top5_level_players )
 	{
 		foreach( $top5_level_players as $player )
 		{
-			echo '<li><div class="top5-player-name">' . $player->name . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
+			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( $player->name ) . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
 		}
 	}
 ?>

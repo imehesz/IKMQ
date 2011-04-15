@@ -45,6 +45,10 @@ class Controller extends CController
         }
         $this->anonymous = $anonymous;
 
+		$cs = Yii::app()->clientScript;
+		$cs->registerScript( 'basepath', 'var basepath="' . Yii::app()->request->baseUrl  . '";', CClientScript::POS_HEAD );
+		$cs->registerScript( 'gamepath', 'var gamepath="' . $this->createUrl( '/game' )  . '";', CClientScript::POS_HEAD );
+
 		Yii::app()->clientScript->registerCoreScript('jquery');
 	}
 }
