@@ -34,6 +34,16 @@ class Controller extends CController
 	{
 		parent::init();
 
+		if( ! array_key_exists( 'ikmq_exp', $_COOKIE ) )
+		{
+			setcookie( 'ikmq_exp', 1, time() + 86400 );
+
+			session_start();
+			session_destroy();
+			session_start();
+			session_regenerate_id( true );
+		}
+		
         // TODO this is just temporary until we come up with a 
         // better way to track users ...
         $anonymous = AnonymousUser::model()->find( 'session_id=:session_id', array( 'session_id' => Yii::app()->session->sessionID ) );

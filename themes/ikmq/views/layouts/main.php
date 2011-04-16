@@ -127,7 +127,7 @@
 </ul>
 
 <h2>Top5 by Score</h2>
-<ul class="something">
+<ul>
 <?php 
 	$top5_level_players = AnonymousUser::model()->findAll( array( 'order' => 'score DESC', 'limit' => 5 ) );
 	if( $top5_level_players )
@@ -138,6 +138,17 @@
 		}
 	}
 ?>
+</ul>
+<h2>Social</h2>
+<ul>
+	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/twitter-bird.gif' ) . ' Twitter', 'http://twitter.com/iknowmyquotes', array( 'target' => '_blank' ) ); ?></li>
+	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_icon.png' ) . ' Facebook', 'http://facebook.com/pages/IKMQ/210513355644472', array( 'target' => '_blank' ) ); ?></li>
+</ul>
+	<h2>Like Us!</h2>
+<ul>
+	<li>
+<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FIKMQ%2F210513355644472&amp;width=220&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:350px;" allowTransparency="true"></iframe>
+	</li>
 </ul>
 <br />
 </aside>
