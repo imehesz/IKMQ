@@ -1,0 +1,83 @@
+table
+{
+	width:100%;
+	font-size: 1.5em;
+}
+
+tr.even
+{
+	background-color: #efefef;
+}
+
+thead
+{
+	background-color: #ddd;
+}
+
+tr:hover
+{
+	background-color: #ddd;
+}
+
+.pager, .summary
+{
+	text-align:right;
+	margin: 20px 5px;
+}
+
+ul.yiiPager
+{
+	font-size:11px;
+	border:0;
+	margin:0;
+	padding:0;
+	line-height:100%;
+	display:inline;
+}
+
+ul.yiiPager li
+{
+	display:inline;
+}
+
+ul.yiiPager a:link,
+ul.yiiPager a:visited
+{
+	border:solid 1px #ddd !important;
+	font-weight:bold;
+	color:#777 !important;
+	padding:1px 6px;
+	text-decoration:none;
+}
+
+ul.yiiPager .page a
+{
+	font-weight:normal;
+}
+
+ul.yiiPager a:hover
+{
+	border:solid 1px #777 !important;
+}
+
+ul.yiiPager .selected a
+{
+	background-color:#777 !important;
+	color:#FFFFFF !important;
+	font-weight:bold;
+}
+
+ul.yiiPager .hidden a
+{
+	border:solid 1px #DEDEDE;
+	color:#888888;
+}
+
+/**
+ *  * Hide first and last buttons by default.
+ *   */
+ul.yiiPager .first,
+ul.yiiPager .last
+{
+	display:none;
+}

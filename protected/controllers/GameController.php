@@ -148,4 +148,38 @@ class GameController extends Controller
 		}
 		die( 'fail' );
 	}
+
+	public function actionHof()
+	{
+		$limit = 15;
+		$toplevel = new CActiveDataProvider( 
+							'AnonymousUser', 
+							array( 
+								'criteria' => array( 
+									'order' 	=> 'level DESC',
+									'condition'	=> 'score>0',
+								),
+								'pagination' => array(
+									'pagesize' => $limit,
+								),
+
+							) 
+						);
+
+		$topscore = new CActiveDataProvider( 
+							'AnonymousUser', 
+							array( 
+								'criteria' => array( 
+									'order' 	=> 'score DESC',
+									'condition'	=> 'score>0',
+								),
+								'pagination' => array(
+									'pagesize' => $limit,
+								),
+
+							) 
+						);
+
+		$this->render( 'hof', array( 'toplevel' => $toplevel, 'topscore' => $topscore ) );
+	}
 }

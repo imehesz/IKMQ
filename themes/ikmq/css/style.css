@@ -231,3 +231,23 @@ p
 	text-align:right;
 	width:200px;
 }
+
+#act-like-table
+{
+	display:table;
+	font-size:20px;
+}
+
+#act-like-row
+{
+	display:table-row;
+}
+
+#act-like-column-1,
+#act-like-column-2,
+#act-like-column-3,
+#act-like-column-4
+{
+	display: table-cell;
+	width: 100px;
+}
