@@ -3,7 +3,6 @@
 <p>
 <h1><?php echo $welcomes[ rand(0,sizeof( $welcomes )-1 ) ];?> Stranger!</h1>
 </p>
-<p><br /></p>
 <p>Congratulations! You, through the miraculous ways of the Internet, actually found us!</p>
 
 <p>So what is this? What are we doing here? It is a simple <b>online game</b>. Nothing more, nothing less. It helps you to feel good about yourself ... <b>if you know movies and movie quotes</b>. And who doesn't?</p>

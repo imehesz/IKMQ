@@ -17,8 +17,22 @@
 <body>
 <div>&nbsp;</div>
 <header>
-	<div id="logo">
-		<a href="#"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/css/ikmq.jpg" alt="Logo" /></a>
+	<div id="logo" title="IKMQ - I Know My Quotes">
+		<a href="<?php echo Yii::app()->request->baseUrl; ?>" style="float:left;"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/css/ikmq.jpg" alt="Logo" /></a>
+		<?php if( ! YII_DEBUG ) : ?>
+			<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-1319358860215477";
+				/* IKMQ - Big */
+				google_ad_slot = "0462714310";
+				google_ad_width = 728;
+				google_ad_height = 90;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		<?php endif; ?>
+		<div style="clear:both;"></div>
 <!--<hgroup>
 <h1>Webtint</h1>
 <h2>Web Development Blog</h2>
@@ -112,6 +126,33 @@
 		<?php endif; ?>
     </ul>
 <?php endif; ?>
+
+
+<?php if( ! YII_DEBUG ) : ?>
+	<script type="text/javascript"><!--
+		google_ad_client = "ca-pub-1319358860215477";
+		/* IKMQ - Small Right */
+		google_ad_slot = "2376479406";
+		google_ad_width = 200;
+		google_ad_height = 200;
+		//-->
+		</script>
+		<script type="text/javascript"
+		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+<?php endif; ?>
+<h2>Social</h2>
+<ul>
+	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/twitter-bird.gif' ) . ' Twitter', 'http://twitter.com/iknowmyquotes', array( 'target' => '_blank' ) ); ?></li>
+	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_icon.png' ) . ' Facebook', 'http://facebook.com/pages/IKMQ/210513355644472', array( 'target' => '_blank' ) ); ?></li>
+</ul>
+	<h2>Like Us!</h2>
+<ul>
+	<li>
+<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FIKMQ%2F210513355644472&amp;width=220&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:350px;" allowTransparency="true"></iframe>
+	</li>
+</ul>
+
 <h2>Top5 by Level</h2>
 <ul>
 <?php 
@@ -138,17 +179,6 @@
 		}
 	}
 ?>
-</ul>
-<h2>Social</h2>
-<ul>
-	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/twitter-bird.gif' ) . ' Twitter', 'http://twitter.com/iknowmyquotes', array( 'target' => '_blank' ) ); ?></li>
-	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_icon.png' ) . ' Facebook', 'http://facebook.com/pages/IKMQ/210513355644472', array( 'target' => '_blank' ) ); ?></li>
-</ul>
-	<h2>Like Us!</h2>
-<ul>
-	<li>
-<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FIKMQ%2F210513355644472&amp;width=220&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:350px;" allowTransparency="true"></iframe>
-	</li>
 </ul>
 <br />
 </aside>

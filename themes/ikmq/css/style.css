@@ -8,6 +8,11 @@ color: #222;
 
 }
 
+p
+{
+	line-height: 30px;
+}
+
 header {
 width: 960px;
 margin: 0px auto;
@@ -15,7 +20,7 @@ display: block;
 
 }
 #logo {
-padding: 15px 0px 15px 40px;
+padding: 15px 0px 15px 20px;
 background: #fff;
 
 			-moz-border-radius: 0.8em;
