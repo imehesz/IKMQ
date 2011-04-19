@@ -110,13 +110,14 @@ $this->breadcrumbs=array(
 		jQuery( '#preparation-countdown' ).hide();
 		jQuery( '#final-countdown' ).show();
 		jQuery( '.td-quote' ).css({'color':'#555'});
-		jQuery( '#quote-cover' ).hide();
+		//jQuery( '#quote-cover' ).hide();
+		jQuery( '#quote-cover' ).css("background-color","inherit");
 	}
 
 
 	jQuery(document).ready( function(){
 		var timerstop = false;
-		var quote_cover_height = jQuery( '#quote-table' ).height();
+		var quote_cover_height = jQuery( '#quote-table' ).height()+25;
 		var sec=10;
 		var finalcnt_down=<?php echo ($model->level*5); ?>;
 
