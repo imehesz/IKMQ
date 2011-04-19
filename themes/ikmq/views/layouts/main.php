@@ -15,6 +15,11 @@
         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ikmq.js"></script>
 </head>
 <body>
+<?php if( preg_match( '/MSIE/i',$_SERVER['HTTP_USER_AGENT'] ) ) : ?>
+    <div style="background-color:red;padding:10px;color:#fff;font-size:2em;text-align:center;">
+        Oops, this page is <strong>not</strong> designed for <strong>Intenet Explorer</strong>.  If you want to see this webpage as intended, please use a standards compliant browser, such as <a href="http://www.google.com/chrome">Google Chrome</a> or <a href="http://getfirefox.com">Firefox</a>.
+    </div>
+<?php endif; ?>
 <div>&nbsp;</div>
 <header>
 	<div id="logo" title="IKMQ - I Know My Quotes">
