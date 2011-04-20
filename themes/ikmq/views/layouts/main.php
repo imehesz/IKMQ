@@ -5,6 +5,7 @@
 		<title><?php echo CHtml::encode( $this->pageTitle ); ?></title>
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/form.css" />
+		<link rel="icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/favicon.ico" type="image/x-icon">
 		<!--[if IE]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 			<link rel="stylesheet" type="text/css" href="iehacks.css" />
@@ -108,7 +109,7 @@
     <h2>Game</h2>
     <ul>
         <li><b>Your Name:</b> 
-            <a href="javascript:void(0);" id="player-name-span-wrapper" title="click to edit"><?php echo $this->anonymous->name; ?></a>
+            <a href="javascript:void(0);" id="player-name-span-wrapper" title="click to edit"><?php echo substr( $this->anonymous->name, 0, 8 ); ?></a>
             <span id="player-name-input-wrapper" style="display:none;float:right;">
                 <?php echo CHtml::textField( 'player-new-name', $this->anonymous->name, array( 'size' => '10' ) ); ?>
                 <?php echo CHtml::button( 'Save', array( 'id' => 'player-update-button' ) ); ?>
@@ -166,7 +167,7 @@
 	{
 		foreach( $top5_level_players as $player )
 		{
-			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( $player->name ) . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
+			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( substr($player->name,0,15) ) . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
 		}
 	}
 ?>
@@ -180,7 +181,7 @@
 	{
 		foreach( $top5_level_players as $player )
 		{
-			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( $player->name ) . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
+			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( substr($player->name,0,15) ) . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
 		}
 	}
 ?>

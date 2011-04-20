@@ -21,7 +21,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 			array(
 				'name' 	=> 'name',
-				'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : $data->name',
+				'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
 				'type'	=> 'raw',
 				'sortable'	=> false,
 			),
@@ -58,7 +58,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 			array(
 				'name' 	=> 'name',
-				'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : $data->name',
+				'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
 				'type'	=> 'raw',
 				'sortable'	=> false,
 			),
