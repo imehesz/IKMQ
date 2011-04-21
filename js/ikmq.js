@@ -29,7 +29,7 @@ alert( "Oops! Please try again :/" );
 		name = jQuery('#player-new-name').val();
 
         jQuery.ajax({
-			url: gamepath + '/ajaxupdatename&name=' + name,
+			url: gamepath + '/ajaxupdatename?name=' + name,
 			context: document.body,
 			success: function( data ){
 				if( data == 'success' )

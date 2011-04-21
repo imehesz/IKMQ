@@ -158,7 +158,7 @@ $this->breadcrumbs=array(
 		var sendAnswers = function(){
 			form_values = jQuery('#quote-answer-form').serialize();
 			jQuery.ajax({
-				'url': gamecontrollerpath + '&' + form_values,
+				'url': gamecontrollerpath + '?' + form_values,
 				'success': function(data){
 					if( data == 0 )
 					{
