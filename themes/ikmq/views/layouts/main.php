@@ -39,7 +39,7 @@
 <div>&nbsp;</div>
 <header>
 	<div id="logo" title="IKMQ - I Know My Quotes">
-		<a href="<?php echo Yii::app()->request->baseUrl; ?>" style="float:left;"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/css/ikmq.jpg" alt="Logo" /></a>
+		<a href="http://ikmq.mehesz.net" style="float:left;"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/css/ikmq.jpg" alt="Logo" /></a>
 		<?php if( ! YII_DEBUG ) : ?>
 			<script type="text/javascript"><!--
 				google_ad_client = "ca-pub-1319358860215477";
