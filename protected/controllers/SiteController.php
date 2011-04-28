@@ -58,7 +58,7 @@ class SiteController extends Controller
 			if($model->validate())
 			{
 				$headers="From: info@mehesz.net\r\nReply-To: info@mehesz.net";
-				mail(Yii::app()->params['adminEmail'],$model->subject,$model->body,$headers);
+				mail(Yii::app()->params['adminEmail'],'Email from IKMQ: ' . $model->subject,'Email: ' . $model->email . "\r\n\r\nMessage: \r\n" . $model->body,$headers);
 				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
 				$this->refresh();
 			}
