@@ -63,7 +63,7 @@
 <nav>
 		<?php 
             $play_item = 
-                ( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'play' ) ?
+                ( Yii::app()->controller->id == 'game' && Yii::app()->controller->action->id == 'newplay' ) ?
                 array( 'label' => 'Pause ||', 'url' => array( '/game/pause' ) ) :
                 array( 'label' => 'Play >', 'url' => array( '/game/play' ) );
 

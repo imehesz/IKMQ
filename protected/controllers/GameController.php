@@ -32,6 +32,7 @@ class GameController extends Controller
 
 	public function actionPlay()
 	{
+		$this->forward( 'newplay' );
 		$level = $this->anonymous->level;
 
         // our movies are limited, while the
@@ -50,6 +51,50 @@ class GameController extends Controller
         }
 
 		$this->render('play', array( 'model' => $game ) );
+	}
+
+	public function actionNewPlay()
+	{
+		if( ! empty( $_POST ) )
+		{
+			$quote_id = (int)$_POST['quote_id'];
+			$movie_id = (int)$_POST['movie_id'];
+			$ticktack = (int)$_POST['ticktack'];
+			$points = ( $ticktack - time() + 20 ) * $this->anonymous->level;
+
+			if( $quote_id && $movie_id && $ticktack )
+			{
+				// let's sww if the answer was correct
+				$is_correct = Quote::model()->find( 'id=:quote_id AND movie_id=:movie_id', array( ':quote_id' => $quote_id, ':movie_id' => $movie_id ) );
+				if( $is_correct )
+				{
+					// let's add some points and increase the level
+					$this->anonymous->updateLevelScore( ($this->anonymous->level+1), $points );
+					$this->render('winning');
+				}
+				else
+				{
+					$this->anonymous->updateLevelScore( ($this->anonymous->level), -50 );
+				}
+			}
+
+			$this->render('fail');
+		}
+		else
+		{
+			$game = new Quote;
+
+			$this->level = $this->anonymous->level;
+			$game->buildNewGame( $this->level );
+
+			$criteria = new CDbCriteria;
+			$criteria->condition = 'movie_id=:movie_id';
+			$criteria->params	= array( ':movie_id' => $game->movies[rand(0,2)]->id );
+			$criteria->order	= strstr( Yii::app()->db->connectionString, 'sqlite' ) ? 'random()' : 'rand()';
+			$quote = Quote::model()->find( $criteria );
+
+			$this->render('newplay', array( 'model' => $game, 'quote' => $quote ) );
+		}
 	}
 
 	public function actionAjaxCheck()

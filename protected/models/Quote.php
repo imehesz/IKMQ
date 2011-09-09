@@ -16,6 +16,7 @@ class Quote extends CActiveRecord
 	public $movies;
 	public $movies_shuffled;
 	public $quotes;
+	public $rendered_movies_list;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -119,10 +120,29 @@ class Quote extends CActiveRecord
 
 		$criteria 			= new CDbCriteria;
 		$criteria->order	= strstr( Yii::app()->db->connectionString, 'sqlite' ) ? 'random()' : 'rand()';
-		$criteria->limit 	= $this->level*2;
+		//$criteria->limit 	= $this->level*2;
+		$criteria->limit 	= 3;
 		$this->movies		= Movie::model()->findAll( $criteria );
 
 		$this->movies_shuffled = $this->movies;
 		shuffle( $this->movies_shuffled );
+	}
+
+	public function buildNewGame( $level = 1 )
+	{
+		$this->level = $level;
+		$criteria 			= new CDbCriteria;
+		$criteria->order	= strstr( Yii::app()->db->connectionString, 'sqlite' ) ? 'random()' : 'rand()';
+		$criteria->limit	= 3;
+		$this->movies 		= Movie::model()->findAll( $criteria );
+		$this->movies_shuffled = $this->movies;
+		shuffle( $this->movies_shuffled );
+		$rendered_movies	= array();
+		foreach( $this->movies_shuffled as $movie )
+		{
+			$rendered_movies[] = $movie->id;
+		}
+
+		$this->rendered_movies_list = implode( ',', $rendered_movies );
 	}
 }
