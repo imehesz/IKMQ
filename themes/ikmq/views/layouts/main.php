@@ -59,7 +59,7 @@
 <h2>Web Development Blog</h2>
 </hgroup>-->
 </div>
-
+<a name="navigation"></a>
 <nav>
 		<?php 
             $play_item = 

@@ -3,16 +3,10 @@
 	<h3>How to play</h3>
 </p>
 <p>
-	The playing "field" is divided into 3 areas + 1 menu:
-	<ol>
-		<li><strong>Play/Pause</strong> menu is probably the most important. You can start and stop the game with that button, at your convenience. Once you paused a game and returned to play, the game will continue on your level.<br /><br /></li>
-		<li><strong>Quotes</strong> - these are the sentences you'll have to recognize from various movies. They will be hidden for <strong>10 seconds</strong>, this is your <strong>"preparation time"</strong>,  so you can hover over the movie pictures and see their title. After the quotes are shown, you have <strong>5 seconds</strong> to find the right movie for <strong>each quote</strong>.<br /><br /></li>
-		<li><strong>Movies</strong> - at the beginning you will see 3 columns, in the first column you have <i>grey boxes</i>, this is where you have to drop the right movie from the other 2 columns. <strong>Please note</strong> that the movies can be anywhere in those 2 columns not necessarily in the same row as the quote!<br /><br /></li>
-		<li><strong>Game Stats</strong> on the right where you can change your name, see your level, your score, and the answered questions so far on this page. If you are fast enough you can also submit your answers earlier.</li>
-	</ol>
+	Welcome to the <b>2.0</b> version. We learned a lot from the 1.0 version, and complitely re-designed the gaming experience, and hopefully made the whole thing more fun.
 </p>
 <p>
-	<?php echo CHtml::image( Yii::app()->request->baseUrl . '/images/ikmq_final.jpg'  ); ?>
+	We think it is so simple, that we don't even explain how to use it. Just click on <b><?php echo CHtml::link( 'PLAY', $this->createUrl( '/game/play' ) ) ?></b> and see it yourself :)'
 </p>
 <p>
 	<h3>FAQ</h3>

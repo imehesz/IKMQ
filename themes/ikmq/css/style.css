@@ -256,3 +256,40 @@ p
 	display: table-cell;
 	width: 100px;
 }
+
+.play-area-wrapper
+{
+	padding-left: 70px;
+	text-align: center;
+}
+
+.quote-wrapper
+{
+	width:510px;
+	font-size: 2.2em;
+	background-color: #FDFCDC;
+	padding:10px;
+	font-style:italic;
+}
+
+.movie-wrapper
+{
+	float:left;
+	height:195px;
+	width:150px;
+	text-align:center;
+	margin:11px;
+	padding-top:15px;
+	border:1px solid #ddd;
+}
+
+.movie-wrapper:hover
+{
+	border:1px solid #777;
+}
+
+.movie-title
+{
+	font-size: 11px;
+	margin-top: 2px;
+}
