@@ -1,13 +1,12 @@
 <?php
-
 /**
  * GameController 
  * 
  * @uses Controller
  * @package 
  * @version $id$
- * @copyright Clevertech
- * @author Imre Mehesz <imre@clevertech.biz> 
+ * @copyright Mehesz.net
+ * @author Imre Mehesz <imehesz@gmail.com> 
  * @license PHP Version 5 {@link http://www.php.net/license/3_01.txt}
  */
 class GameController extends Controller
@@ -55,6 +54,8 @@ class GameController extends Controller
 
 	public function actionNewPlay()
 	{
+		$is_correct = null;
+
 		if( ! empty( $_POST ) )
 		{
 			$quote_id = (int)$_POST['quote_id'];
@@ -64,37 +65,36 @@ class GameController extends Controller
 
 			if( $quote_id && $movie_id && $ticktack )
 			{
-				// let's sww if the answer was correct
+				// let's see if the answer was correct
 				$is_correct = Quote::model()->find( 'id=:quote_id AND movie_id=:movie_id', array( ':quote_id' => $quote_id, ':movie_id' => $movie_id ) );
 				if( $is_correct )
 				{
 					// let's add some points and increase the level
 					$this->anonymous->updateLevelScore( ($this->anonymous->level+1), $points );
-					$this->render('winning');
+					//$this->render('winning');
 				}
 				else
 				{
+					$is_correct = false;
 					$this->anonymous->updateLevelScore( ($this->anonymous->level), -50 );
 				}
 			}
 
-			$this->render('fail');
+			//$this->render('fail');
 		}
-		else
-		{
-			$game = new Quote;
 
-			$this->level = $this->anonymous->level;
-			$game->buildNewGame( $this->level );
+		$game = new Quote;
 
-			$criteria = new CDbCriteria;
-			$criteria->condition = 'movie_id=:movie_id';
-			$criteria->params	= array( ':movie_id' => $game->movies[rand(0,2)]->id );
-			$criteria->order	= strstr( Yii::app()->db->connectionString, 'sqlite' ) ? 'random()' : 'rand()';
-			$quote = Quote::model()->find( $criteria );
+		$this->level = $this->anonymous->level;
+		$game->buildNewGame( $this->level );
 
-			$this->render('newplay', array( 'model' => $game, 'quote' => $quote ) );
-		}
+		$criteria = new CDbCriteria;
+		$criteria->condition = 'movie_id=:movie_id';
+		$criteria->params	= array( ':movie_id' => $game->movies[rand(0,2)]->id );
+		$criteria->order	= strstr( Yii::app()->db->connectionString, 'sqlite' ) ? 'random()' : 'rand()';
+		$quote = Quote::model()->find( $criteria );
+
+		$this->render('newplay', array( 'model' => $game, 'quote' => $quote, 'is_correct' => $is_correct ) );
 	}
 
 	public function actionAjaxCheck()

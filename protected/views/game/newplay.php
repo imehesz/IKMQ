@@ -4,6 +4,13 @@
 ?>
 
 <div>
+<div class="label-wrapper">
+	<?php if( isset( $is_correct ) && $is_correct ) : ?>
+		<span class="label success">your answer was correct</span>
+	<?php elseif( isset( $is_correct ) && $is_correct === false ) : ?>
+		<span class="label important">your answer was not correct</span>
+	<?php endif ?>
+</div>
 	<?php echo CHtml::beginForm( null, 'post', array( 'id' => 'quote-answer-form' ) ); ?>
 		<?php
 			echo CHtml::hiddenField( 'quote_id', $quote->id );
