@@ -132,8 +132,8 @@
             </span>
 			<div style="clear:both;"></div>
          </li>
-        <li><b>Level:</b> <?php echo number_format( $this->anonymous->level );?></li>
-        <li><b>Score:</b> <?php echo number_format( $this->anonymous->score ); ?></li>
+        <li><b>Level:</b> <span id="user_level"><?php echo number_format( $this->anonymous->level );?></span></li>
+        <li><b>Score:</b> <span id="user_score"><?php echo number_format( $this->anonymous->score ); ?></span></li>
 		<?php if( Yii::app()->controller->action->id == 'play' ) : ?>
         <li><b title="Answered in this round">Answered:</b> <span id="answered_so_far">0</span>/<?php echo $this->level; ?></li>
         <li id="preparation-countdown">
