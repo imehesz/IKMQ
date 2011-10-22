@@ -114,12 +114,14 @@ class GameController extends Controller
 				$is_correct = Quote::model()->find( 'id=:quote_id AND movie_id=:movie_id', array( ':quote_id' => $quote_id, ':movie_id' => $movie_id ) );
 				if( $is_correct )
 				{
+					$this->anonymous->good_answers = $this->anonymous->good_answers + 1;
 					// let's add some points and increase the level
 					$this->anonymous->updateLevelScore( ($this->anonymous->level+1), $points );
 				}
 				else
 				{
 					$is_correct = false;
+					$this->anonymous->bad_answers = $this->anonymous->bad_answers + 1;
 					$this->anonymous->updateLevelScore( ($this->anonymous->level), -50 );
 				}
 			}
