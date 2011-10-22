@@ -49,6 +49,23 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 <hr />
 
+	<?php if( ! YII_DEBUG ) : ?>
+		<div style="text-align:center;">
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-1319358860215477";
+			/* ikmq - middle */
+			google_ad_slot = "9677305935";
+			google_ad_width = 468;
+			google_ad_height = 60;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+	<?php endif ?>
+
+<hr />
 <h2>By Score</h2>
 
 <?php
