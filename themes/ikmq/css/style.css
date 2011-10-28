@@ -326,3 +326,47 @@ p
 	text-align:center;
 	height:20px;
 }
+
+.edit-instant
+{
+	font-size: 14px;
+	color: #ddd;
+	margin-left: 5px;
+}
+
+.edit-instant a
+{
+	color: #ddd;
+}
+
+.edit-instant a:hover
+{
+	color: #777;
+}
+
+.profile-percent
+{
+	font-size: 5em;
+	font-weight: bolder;
+	border-right: 1px solid #ddd;
+	text-align: center;
+}
+
+.profile-badges
+{
+	font-size: 2em;
+	font-weight: bolder;
+	border-left: 1px solid #ddd;
+}
+
+.profile-stat
+{
+	font-size: 1.5em;
+}
+
+.profile-stat-label
+{
+	font-weight: bolder;
+	width: 200px;
+	float: left;
+}

@@ -57,6 +57,8 @@ class AnonymousUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'badges' 		=> array(self::MANY_MANY, 'Badge', 'assoc_user_badge(user_id, badge_id)'),
+			'badgeCount'	=> array(self::STAT, 'Badge', 'assoc_user_badge(user_id, badge_id)'),
 		);
 	}
 
@@ -124,7 +126,29 @@ class AnonymousUser extends CActiveRecord
         $this->level = $newlevel;
         $this->score = $this->score+$newscore;
         $this->updated = time();
-
         $this->update();
+
+		// let's check if we have a badge for this level ...
+		$badge = Badge::model()->find( 'level=:level', array( ':level' => $newlevel ) );
+
+		if( $badge )
+		{
+			// if there is already a badge for this user we won't create it again
+
+			$userbadge_exist = AssocUserBadge::model()->findByAttributes( array( 'user_id' => $this->id, 'badge_id' => $badge->id ) );
+
+			if( ! $userbadge_exist )
+			{
+				// save badge for user ...
+				$userbadge = new AssocUserBadge;
+				$userbadge->user_id 	= $this->id;
+				$userbadge->badge_id	= $badge->id;
+				$userbadge->save(); 
+			}
+
+			// redirect to the badge view page
+			//Yii::app()->anonymous->setFlash('success', 'woo hooooo' );
+			Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
+		}
     }
 }
