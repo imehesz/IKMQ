@@ -32,6 +32,11 @@ class GameController extends Controller
 	public function actionPlay()
 	{
 		$this->forward( 'newplay' );
+
+		/////////////////////////
+		// D E P R E C A T E D //
+		/////////////////////////
+
 		$level = $this->anonymous->level;
 
         // our movies are limited, while the
@@ -76,7 +81,7 @@ class GameController extends Controller
 				else
 				{
 					$is_correct = false;
-					$this->anonymous->updateLevelScore( ($this->anonymous->level), -50 );
+					$this->anonymous->updateLevelScore( ($this->anonymous->level), ( -25*$this->anonymous->level ) );
 				}
 			}
 
@@ -122,7 +127,7 @@ class GameController extends Controller
 				{
 					$is_correct = false;
 					$this->anonymous->bad_answers = $this->anonymous->bad_answers + 1;
-					$this->anonymous->updateLevelScore( ($this->anonymous->level), -50 );
+					$this->anonymous->updateLevelScore( ($this->anonymous->level), (-25*$this->anonymous->level) );
 				}
 			}
 		}

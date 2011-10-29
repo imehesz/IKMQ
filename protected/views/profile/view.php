@@ -1,4 +1,23 @@
-<h1><?php echo strpos($model->name,"@") === 0 ? MUtility::twitterMe( $model->name ) : substr($model->name,0,20) ?><span class="edit-instant"><?php echo CHtml::link(Yii::t( 'global', 'edit' ), '#' ) ?></span></h1>
+<h1 id="player-name-h1">
+	<?php echo strpos($model->name,"@") === 0 ? MUtility::twitterMe( $model->name ) : substr($model->name,0,20) ?>
+	<?php if( $this->anonymous->id == $model->id ) : ?>
+		<span id="player-name-span-wrapper" class="edit-instant"><?php echo CHtml::link(Yii::t( 'global', 'edit' ), '#' ) ?></span>
+	<?php endif ?>
+</h1>
+
+
+<?php if( $this->anonymous->id == $model->id ) : ?>
+	<div>
+		<span id="player-name-input-wrapper" style="display:none;">
+		<?php echo CHtml::textField( 'player-new-name', $this->anonymous->name, array( 'size' => '15', 'style' => 'font-size:22px;' ) ); ?>
+		<?php echo CHtml::button( 'Save', array( 'id' => 'player-update-button' ) ); ?>
+		<?php echo CHtml::button( 'Close', array( 'id' => 'player-cancel-button' ) ); ?>
+		</span>
+		<div style="clear:both;"></div>
+	</div>
+<?php endif ?>
+
+
 <hr />
 <table width="100%">
 	<tr valign="top">

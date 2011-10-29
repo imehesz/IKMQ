@@ -120,17 +120,11 @@
 	</ul>
 <?php endif; ?>
 
-<?php if( Yii::app()->controller->id == 'game' ) : ?>
+<?php if( Yii::app()->controller->id == 'game' || Yii::app()->controller->id == 'profile' ) : ?>
     <h2>Game</h2>
     <ul>
-        <li><b>Your Name:</b> 
-            <a href="javascript:void(0);" id="player-name-span-wrapper" title="click to edit"><?php echo substr( $this->anonymous->name, 0, 8 ); ?></a>
-            <span id="player-name-input-wrapper" style="display:none;float:right;">
-                <?php echo CHtml::textField( 'player-new-name', $this->anonymous->name, array( 'size' => '10' ) ); ?>
-                <?php echo CHtml::button( 'Save', array( 'id' => 'player-update-button' ) ); ?>
-                <?php echo CHtml::button( 'Close', array( 'id' => 'player-cancel-button' ) ); ?>
-            </span>
-			<div style="clear:both;"></div>
+        <li> 
+			<?php echo CHtml::link( $this->anonymous->name, $this->createUrl( '/profile/view', array('id' => $this->anonymous->id ) ) ) ?>
          </li>
         <li><b>Level:</b> <span id="user_level"><?php echo number_format( $this->anonymous->level );?></span></li>
         <li><b>Score:</b> <span id="user_score"><?php echo number_format( $this->anonymous->score ); ?></span></li>

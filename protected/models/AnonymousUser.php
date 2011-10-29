@@ -144,11 +144,13 @@ class AnonymousUser extends CActiveRecord
 				$userbadge->user_id 	= $this->id;
 				$userbadge->badge_id	= $badge->id;
 				$userbadge->save(); 
+
+				// redirect to the badge view page
+				Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
 			}
 
 			// redirect to the badge view page
-			//Yii::app()->anonymous->setFlash('success', 'woo hooooo' );
-			Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
+			// Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
 		}
     }
 }

@@ -1,6 +1,7 @@
 jQuery(document).ready(function(){
     jQuery('body').delegate('#player-name-span-wrapper','click',function( obj ){
         jQuery('#player-name-span-wrapper').hide();
+        jQuery('#player-name-h1').hide();
         jQuery('#player-name-input-wrapper').show();
 
 /*
@@ -35,8 +36,10 @@ alert( "Oops! Please try again :/" );
 				if( data == 'success' )
 				{
 			        jQuery('#player-name-input-wrapper').hide();
-        			jQuery('#player-name-span-wrapper').html( name );
+        			jQuery('#player-name-h1').html( name );
         			jQuery('#player-name-span-wrapper').show();
+        			jQuery('#player-name-h1').show();
+					window.location.reload();
 				}
 				else
 				{
@@ -50,5 +53,6 @@ alert( "Oops! Please try again :/" );
     jQuery('body').delegate('#player-cancel-button','click',function( obj ){
         jQuery('#player-name-input-wrapper').hide();
         jQuery('#player-name-span-wrapper').show();
+        jQuery('#player-name-h1').show();
     });
 })
