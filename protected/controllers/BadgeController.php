@@ -27,7 +27,7 @@ class BadgeController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'king' ),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -65,6 +65,14 @@ class BadgeController extends Controller
 			$this->render( 'view',array(
 				'model' => $model,
 			));
+		}
+	}
+
+	public function actionKing( $justgotit = true )
+	{
+		if( $justgotit )
+		{
+			$this->renderPartial( 'king' );
 		}
 	}
 

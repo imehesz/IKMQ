@@ -123,6 +123,11 @@ class AnonymousUser extends CActiveRecord
 
     public function updateLevelScore( $newlevel, $newscore )
     {
+
+		// will be used last to check if the user becomes 
+		// number one
+		$current_number_one = self::getNumberOne();
+
         $this->level = $newlevel;
         $this->score = $this->score+$newscore;
         $this->updated = time();
@@ -152,5 +157,31 @@ class AnonymousUser extends CActiveRecord
 			// redirect to the badge view page
 			// Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
 		}
+
+		if( 
+			$current_number_one && 
+			$current_number_one->id != Yii::app()->controller->anonymous->id && 
+			$current_number_one->score < $this->score 
+		)
+		{
+			Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
+		}
     }
+
+	public static function getNumberOne()
+	{
+		return self::model()->find( array( 'order' => 'score DESC' ) );
+	}
+
+	public static function amINumberOne()
+	{
+		$current_number_one = self::getNumberOne();
+
+		return ( 
+				$current_number_one && 
+				$current_number_one->id == Yii::app()->controller->anonymous->id 
+			) ?
+			true :
+			false;
+	}
 }

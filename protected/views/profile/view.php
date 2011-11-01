@@ -71,6 +71,15 @@
 			<div class="profile-percent"><?php echo $model->badgeCount ?></div>
 		</td>
 		<td>
+			<?php if( AnonymousUser::getNumberOne() && AnonymousUser::getNumberOne()->id == $model->id ) : ?>
+				<?php
+					$image = 'king.png';
+					echo CHtml::image( 
+						Yii::app()->request->baseUrl . 
+						'/image.php?width=75&height=75&image='. Yii::app()->request->baseUrl . '/images/badges/' . $image , null, array( 'title' => 'KING OF QUOTES', 'width' => 75, 'height' => 75 ) ) . ' '; 
+				?>
+			<?php endif ?>
+
 			<?php if( $model->badgeCount ) : ?>
 				<?php foreach( $model->badges as $badge ) : ?>
 					<?php
