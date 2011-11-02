@@ -1,3 +1,26 @@
+var updateLatestQuotes = function( movie_id )
+{
+	if( movie_id > 0)
+	{
+		
+		jQuery('#latest-quotes-wrapper').html( 'loading ...' );
+	 jQuery.ajax({
+			url: quotepath + '/ajaxgetlatestquotes?mid=' + movie_id,
+			context: document.body,
+			success: function( data ){
+				if( data != 'fail' )
+				{
+					jQuery('#latest-quotes-wrapper').html( data );
+				}
+				else
+				{
+					jQuery('#latest-quotes-wrapper').html('-');
+				}
+			}
+		});
+	}
+}
+
 jQuery(document).ready(function(){
     jQuery('body').delegate('#player-name-span-wrapper','click',function( obj ){
         jQuery('#player-name-span-wrapper').hide();
@@ -55,4 +78,4 @@ alert( "Oops! Please try again :/" );
         jQuery('#player-name-span-wrapper').show();
         jQuery('#player-name-h1').show();
     });
-})
+});

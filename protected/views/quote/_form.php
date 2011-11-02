@@ -9,6 +9,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+	<?php /*
 	<div class="row">
 		<?php echo $form->labelEx($model,'movie_id'); ?>
 		<?php 
@@ -27,10 +28,17 @@
 		<?php echo $form->hiddenField($model,'movie_id'); ?>
 		<?php echo $form->error($model,'movie_id'); ?>
 	</div>
+	*/ ?>
+
+	<div class="row">
+		<?php echo $form->labelEx( $model, 'movie_id' ); ?>
+		<?php echo $form->dropDownList( $model, 'movie_id', CHtml::listData( Movie::model()->findAll( array('order' => 'title' ) ),'id','title' ), array( 'style' => 'width:300px', 'class' => 'chzn-select', 'onchange' => 'updateLatestQuotes(jQuery( "#"+this.id).val() );' ) ) ?>
+	</div>
+	<?php $this->widget( 'ext.EChosen.EChosen' ); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'quote'); ?>
-		<?php echo $form->textArea($model,'quote',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'quote',array('rows'=>6, 'cols'=>45)); ?>
 		<?php echo $form->error($model,'quote'); ?>
 	</div>
 

@@ -31,7 +31,7 @@ class QuoteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update', 'ajaxgetlatestquotes'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -147,6 +147,31 @@ class QuoteController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+
+	public function actionAjaxGetLatestQuotes( $mid )
+	{
+		// let's check first if mid is a real mid
+		$movie = Movie::model()->findByPk( $mid );
+		if( $movie )
+		{
+			$criteria = new CDbCriteria;
+			$criteria->limit = 15;
+			$criteria->order = 'created DESC';
+			$criteria->condition = 'movie_id=' . $movie->id;
+
+			$quotes = Quote::model()->findAll( $criteria );
+			if( ! empty( $quotes ) )
+			{
+				foreach( $quotes as $quote )
+				{
+					echo "<div style='margin:10px 0px;border-bottom:1px dotted #aaa;'>- {$quote->quote}</div>";
+				}
+				Yii::app()->end();
+			}
+		}
+
+		die( 'fail' );
 	}
 
 	/**
