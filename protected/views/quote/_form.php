@@ -31,6 +31,12 @@
 	*/ ?>
 
 	<div class="row">
+		<?php
+			if( Yii::app()->request->getParam( 'lastmid', null ) )
+			{
+				$model->movie_id = Yii::app()->request->getParam('lastmid');
+			}
+		?>
 		<?php echo $form->labelEx( $model, 'movie_id' ); ?>
 		<?php echo $form->dropDownList( $model, 'movie_id', CHtml::listData( Movie::model()->findAll( array('order' => 'title' ) ),'id','title' ), array( 'style' => 'width:300px', 'class' => 'chzn-select', 'onchange' => 'updateLatestQuotes(jQuery( "#"+this.id).val() );' ) ) ?>
 	</div>

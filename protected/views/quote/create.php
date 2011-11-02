@@ -22,4 +22,11 @@ $this->menu=array(
 </div>
 
 <?php Yii::app()->clientScript->registerScript( 'quotepath', 'var quotepath="' . Yii::app()->controller->createUrl( '/quote' ) . '";', CClientScript::POS_HEAD ) ?>
-<?php Yii::app()->clientScript->registerScript( 'updatelatestcode', 'updateLatestQuotes(' . Movie::model()->find( array( 'order'=>'title' ) )->id . ');', CClientScript::POS_END ) ?>
+<?php 
+	$lastmid = 
+		Yii::app()->request->getParam('lastmid', null ) ? 
+			Yii::app()->request->getParam('lastmid'):
+			Movie::model()->find( array( 'order'=>'title' ) )->id;
+
+	Yii::app()->clientScript->registerScript( 'updatelatestcode', 'updateLatestQuotes(' . $lastmid . ');', CClientScript::POS_END );
+?>

@@ -70,7 +70,9 @@ class QuoteController extends Controller
 		{
 			$model->attributes=$_POST['Quote'];
 			if($model->save())
-				$this->redirect( array( 'create' ) );
+			{
+				$this->redirect( Yii::app()->controller->createUrl( 'create', array( 'lastmid' => $model->movie_id ) ) );
+			}
 				//$this->redirect(array('view','id'=>$model->id));
 		}
 
