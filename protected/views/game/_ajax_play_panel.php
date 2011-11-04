@@ -1,15 +1,28 @@
 <div id="ajax-play-panel-internal">
-<?php
-	Yii::app()->clientScript->registerScript( 'gamecontrollerpath', "var gamecontrollerpath='" . Yii::app()->controller->createAbsoluteUrl( '/game/' ) . "'", CClientScript::POS_HEAD );
-?>
+	<?php
+		Yii::app()->clientScript->registerScript( 'gamecontrollerpath', "var gamecontrollerpath='" . Yii::app()->controller->createAbsoluteUrl( '/game/' ) . "'", CClientScript::POS_HEAD );
+	?>
 
-<div class="label-wrapper">
-	<?php if( isset( $is_correct ) && $is_correct ) : ?>
-		<span class="label success">your answer was correct</span>
-	<?php elseif( isset( $is_correct ) && $is_correct === false ) : ?>
-		<span class="label important">your answer was wrong</span>
-	<?php endif ?>
-</div>
+	<div class="label-wrapper">
+		<?php if( isset( $is_correct ) && $is_correct ) : ?>
+			<span class="label success">your answer was correct</span>
+		<?php elseif( isset( $is_correct ) && $is_correct === false ) : ?>
+			<span class="label important">your answer was wrong</span>
+		<?php endif ?>
+	</div>
+
+	<!-- new type quote -->
+	<div style="background-color:#fdfcdc;">
+	<hr />
+	<div style="text-align:center;">
+		<blockquote>
+			<?php echo $quote->quote ?>
+		</blockquote>
+	</div>
+	<hr />
+	</div>
+	<!-- new type quote -->
+
 	<?php echo CHtml::beginForm( null, 'post', array( 'id' => 'quote-answer-form' ) ); ?>
 		<?php
 			echo CHtml::hiddenField( 'quote_id', $quote->id );
@@ -18,45 +31,33 @@
 			echo CHtml::hiddenField( 'rendered_movies_list', $model->rendered_movies_list );
 		?>
 		<div class="play-area-wrapper">
-			<div class="quote-wrapper">
-				<?php echo $quote->quote ?>
-			</div>
 			<?php echo CHtml::image( Yii::app()->request->baseUrl . '/images/pickone.png' ) ?>
+			<table width="100%">
+				<tr>
 			<?php foreach( $model->movies as $movie ) : ?>
-				<div class="movie-wrapper" id="movie_<?php echo $movie->id ?>">
-					<div>
-						<?php
-							echo CHtml::image( 
-								Yii::app()->request->baseUrl . 
-									'/image.php?width=120&height=175&image='. Yii::app()->request->baseUrl . '/' . Yii::app()->params['moviescreenshots'] . $movie->pic, null, array( 'title' => $movie->title, 'width' => 120, 'height' => 175 ) ) . ' '; 
-						?>
+				<td align="center">
+					<div class="movie-wrapper" id="movie_<?php echo $movie->id ?>">
+						<div>
+							<?php
+								echo CHtml::image( 
+									Yii::app()->request->baseUrl . 
+										'/image.php?width=120&height=175&image='. Yii::app()->request->baseUrl . '/' . Yii::app()->params['moviescreenshots'] . $movie->pic, null, array( 'title' => $movie->title, 'width' => 120, 'height' => 175 ) ) . ' '; 
+							?>
+						</div>
+						<div class="movie-title">
+							<?php echo $movie->title ?>
+						</div>
 					</div>
-					<div class="movie-title">
-						<?php echo $movie->title ?>
-					</div>
-				</div>
+				</td>
 			<?php endforeach ?>
 			<div style="clear:both;"></div>
+			</td>
+			</tr>
+			</table>
 		</div>
 	<?php echo CHtml::endForm(); ?>
 
 <script language="javascript">
-	/*
-	var updateAjaxPlayPanel = function()
-	{
-		$.ajax({
-			url: gamecontrollerpath + "/ajaxnewplay",
-			context: document.body,
-			success: function( data ){
-				if( data != 'fail' )
-				{
-					jQuery('#ajax-play-panel-internal').html( data );
-				}
-			}
-		});
-	}
-	*/
-
 	jQuery(document).ready(function()
 	{
 		jQuery('.movie-wrapper').click(function(){

@@ -162,7 +162,7 @@ h6 { font-size: 0.8em; }
 hgroup h3, hgroup h3 a { color: #9aa8ad !important; }
 hgroup h1, hgroup h1 a { color: #51add3 !important; }
 h3 a { text-decoration: underline; }
-h1, h2, h3, h4, h5, h6 { line-height: 0.5em; }
+h1, h2, h4, h5, h6 { line-height: 0.5em; }
 
 a {
 color: #2a708e;
@@ -259,7 +259,7 @@ p
 
 .play-area-wrapper
 {
-	padding-left: 70px;
+	/*padding-left: 70px;*/
 	text-align: center;
 }
 
@@ -274,7 +274,7 @@ p
 
 .movie-wrapper
 {
-	float:left;
+	/*float:left;*/
 	height:195px;
 	width:150px;
 	text-align:center;
@@ -369,4 +369,12 @@ p
 	font-weight: bolder;
 	width: 200px;
 	float: left;
+}
+
+blockquote
+{
+	font-size: 22px;
+	display: block;
+	padding: 0 20px;
+	font-style: italic;
 }
