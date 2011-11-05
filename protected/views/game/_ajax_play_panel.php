@@ -31,7 +31,20 @@
 			echo CHtml::hiddenField( 'rendered_movies_list', $model->rendered_movies_list );
 		?>
 		<div class="play-area-wrapper">
-			<?php echo CHtml::image( Yii::app()->request->baseUrl . '/images/pickone.png' ) ?>
+			<div id="pickone_banner" style="height:60px;overflow:hidden;">
+				<?php echo CHtml::image( Yii::app()->request->baseUrl . '/images/pickone.png' ) ?>
+			</div>
+			<div id="pickone_ad_banner" style="margin:0 auto;display:none;height:60px;overflow:hidden;">
+				<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-1319358860215477";
+					/* ikmq - middle */
+					google_ad_slot = "9677305935";
+					google_ad_width = 468;
+					google_ad_height = 60;
+					//-->
+				</script>
+				<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+			</div>
 			<table width="100%">
 				<tr>
 			<?php foreach( $model->movies as $movie ) : ?>
@@ -99,5 +112,6 @@
 <script>
 	jQuery('#user_level').html("<?php echo $this->anonymous->level ?>");
 	jQuery('#user_score').html("<?php echo number_format( $this->anonymous->score ) ?>");
+	var t=setTimeout("jQuery('#pickone_banner').hide();jQuery('#pickone_ad_banner').show();",3000);
 </script>
 </div>
