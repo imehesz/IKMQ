@@ -21,7 +21,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 			array(
 				'name' 	=> 'name',
-				'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
+				//'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
+				'value' => 'CHtml::link( substr($data->name,0,20), Yii::app()->controller->createUrl( "/profile/view", array( "id" => $data->id ) ) )',
 				'type'	=> 'raw',
 				'sortable'	=> false,
 			),
@@ -75,7 +76,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'columns'=>array(
 			array(
 				'name' 	=> 'name',
-				'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
+				//'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
+				'value' => 'CHtml::link( substr($data->name,0,20), Yii::app()->controller->createUrl( "/profile/view", array( "id" => $data->id ) ) )',
 				'type'	=> 'raw',
 				'sortable'	=> false,
 			),

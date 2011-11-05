@@ -68,7 +68,19 @@
 <table width="100%">
 	<tr>
 		<td width="200px">
-			<div class="profile-percent"><?php echo $model->badgeCount ?></div>
+			<div class="profile-percent">
+				<?php 
+
+					if( AnonymousUser::getNumberOne() && AnonymousUser::getNumberOne()->id == $model->id )
+					{
+						echo $model->badgeCount+1; 
+					}
+					else
+					{
+						echo $model->badgeCount;
+					}
+				?>
+			</div>
 		</td>
 		<td>
 			<?php if( AnonymousUser::getNumberOne() && AnonymousUser::getNumberOne()->id == $model->id ) : ?>
