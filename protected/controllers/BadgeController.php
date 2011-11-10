@@ -27,7 +27,7 @@ class BadgeController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'king' ),
+				'actions'=>array('index','view', 'king', 'viewbyname' ),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -66,6 +66,18 @@ class BadgeController extends Controller
 				'model' => $model,
 			));
 		}
+	}
+
+	public function actionViewByName( $name, $justgotit=false )
+	{
+		// it's kinda redundant but will work for now
+		$model = Badge::model()->find( 'name=:name', array( ':name' => $name ) );
+		if( $model )
+		{
+			$this->actionView( $model->id, $justgotit );
+		}
+
+		throw new CHttpException( '404', "Oops! `$name` badge doesn't exist!" );
 	}
 
 	public function actionKing( $justgotit = true )

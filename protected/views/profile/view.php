@@ -98,7 +98,7 @@
 						$image = $badge->picture ?: 'badge.png';
 						echo CHtml::link( CHtml::image( 
 							Yii::app()->request->baseUrl . 
-							'/image.php?width=75&height=75&image='. Yii::app()->request->baseUrl . '/images/badges/' . $image , null, array( 'title' => $badge->name, 'width' => 75, 'height' => 75 ) ) . ' ', $this->createUrl( '/badge/view', array( 'id' => $badge->id ) ) ); 
+							'/image.php?width=75&height=75&image='. Yii::app()->request->baseUrl . '/images/badges/' . $image , null, array( 'title' => $badge->name, 'width' => 75, 'height' => 75 ) ) . ' ', $this->createUrl( '/badge/viewbyname', array( 'name' => strtolower($badge->name) ) ) ); 
 					?>
 
 				<?php endforeach ?>

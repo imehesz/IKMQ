@@ -101,9 +101,10 @@
 	});
 </script>
 <script>
-	/*
 	jQuery('#user_level').html("<?php echo $this->anonymous->level ?>");
 	jQuery('#user_score').html("<?php echo number_format( $this->anonymous->score ) ?>");
+
+	/*
 	var t=setTimeout("jQuery('#pickone_banner').hide();jQuery('#pickone_ad_banner').html( jQuery('#ad_holder_on_play').html() );jQuery('#pickone_ad_banner').show();",3000);
 	*/
 </script>
