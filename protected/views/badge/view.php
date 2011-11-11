@@ -10,10 +10,10 @@
 				<table style="width:100%;" cellspacing=20>
 					<tr valign="top">
 						<td valign="top" align="right" width="50%">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/badge/viewbyname', array( 'name' => strtolower( $model->name ) ) ) ?>" data-text="Just received the <?php echo strtoupper( $model->name ) ?> badge on IKnowQuotes! <?php echo Yii::app()->createAbsoluteUrl( '/badge/viewbyname', array( 'name' => strtolower( $model->name ) ) ) ?> #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script> 
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/profile/view/', array( 'id' => $this->anonymous->id ) ) ?>" data-text="Just received the <?php echo strtoupper( $model->name ) ?> badge on IKnowQuotes! <?php echo Yii::app()->createAbsoluteUrl( '/profile/view/', array( 'id' => $this->anonymous->id ) ) ?> #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script> 
 						</td>
 						<td valign="top" align="left" width="50%">
-							<a name="fb_share" share_url="<?php echo $this->createAbsoluteUrl('/badge/viewbyname', array( 'name' => strtolower( $model->name ) ) )?>">facebook</a> 
+							<a name="fb_share" share_url="<?php echo $this->createAbsoluteUrl('/profile/view/', array( 'id' => $this->anonymous->id ) )?>">facebook</a> 
 							<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 						</td>
 					</tr>

@@ -124,7 +124,7 @@
     <h2>Game</h2>
     <ul>
         <li> 
-			<?php echo CHtml::link( $this->anonymous->name, $this->createUrl( '/profile/view', array('id' => $this->anonymous->id ) ) ) ?>
+			<b>Name:</b> <?php echo CHtml::link( $this->anonymous->name, $this->createUrl( '/profile/view', array('id' => $this->anonymous->id ) ) ) ?>
          </li>
         <li><b>Level:</b> <span id="user_level"><?php echo number_format( $this->anonymous->level );?></span></li>
         <li><b>Score:</b> <span id="user_score"><?php echo number_format( $this->anonymous->score ); ?></span></li>
