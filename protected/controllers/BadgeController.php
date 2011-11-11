@@ -71,13 +71,20 @@ class BadgeController extends Controller
 	public function actionViewByName( $name, $justgotit=false )
 	{
 		// it's kinda redundant but will work for now
-		$model = Badge::model()->find( 'name=:name', array( ':name' => $name ) );
-		if( $model )
+		if( $name != 'king' )
 		{
-			$this->actionView( $model->id, $justgotit );
-		}
+			$model = Badge::model()->find( 'name=:name', array( ':name' => $name ) );
+			if( $model )
+			{
+				$this->actionView( $model->id, $justgotit );
+			}
 
-		throw new CHttpException( '404', "Oops! `$name` badge doesn't exist!" );
+			throw new CHttpException( '404', "Oops! `$name` badge doesn't exist!" );
+		}
+		else
+		{
+			$this->actionKing( $justgotit );
+		}
 	}
 
 	public function actionKing( $justgotit = true )

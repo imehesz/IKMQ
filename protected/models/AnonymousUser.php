@@ -57,7 +57,7 @@ class AnonymousUser extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'badges' 		=> array(self::MANY_MANY, 'Badge', 'assoc_user_badge(user_id, badge_id)'),
+			'badges' 		=> array(self::MANY_MANY, 'Badge', 'assoc_user_badge(user_id, badge_id)', 'order' => 'created DESC' ),
 			'badgeCount'	=> array(self::STAT, 'Badge', 'assoc_user_badge(user_id, badge_id)'),
 		);
 	}

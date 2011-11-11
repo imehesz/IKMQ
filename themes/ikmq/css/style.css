@@ -378,3 +378,15 @@ blockquote
 	padding: 0 20px;
 	font-style: italic;
 }
+
+.logo-img
+{
+	width: 200px;
+	height: 100px;
+	background: url( ikmq.jpg ) no-repeat;
+}
+
+.badge-descr
+{
+	font-size: 90%; 
+}

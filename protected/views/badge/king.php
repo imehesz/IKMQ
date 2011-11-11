@@ -9,7 +9,7 @@
 				<table style="width:100%;" cellspacing=20>
 					<tr valign="top">
 						<td valign="top" align="right" width="50%">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/profile/view', array( 'id' => $this->anonymous->id ) ) ?>" data-text="I just received the KING OF QUOTES badge on IKMQ! #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/profile/view', array( 'id' => $this->anonymous->id ) ) ?>" data-text="I just received the KING OF QUOTES badge on IKnowQuotes! <?php echo $this->createAbsoluteUrl('/profile/view', array( 'id' => Yii::app()->controller->anonymous->id ) ) ?> #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 						</td>
 						<td valign="top" align="left" width="50%">
 							<a name="fb_share" share_url="<?php echo $this->createAbsoluteUrl('/profile/view', array( 'id' => Yii::app()->controller->anonymous->id ) )?>">facebook</a> 

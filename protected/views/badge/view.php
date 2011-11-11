@@ -53,10 +53,14 @@
 					'/image.php?width=200&height=200&image='. Yii::app()->request->baseUrl . '/images/badges/' . $image , null, array( 'title' => $model->name, 'width' => 200, 'height' => 200 ) ) . ' '; 
 			?>
 		</td>
-		<td valign="top" width="300px">
+		<td valign="top" width="375px">
 			<div class="profile-badges"><?php echo $model->name ?></div>
-			<p>
-				<?php echo $model->description ?>
+			<p class="badge-descr">
+				<?php 
+					$this->beginWidget('CMarkdown');
+					echo $model->description;
+					$this->endWidget(); 
+				?>
 			</p>
 		</td>
 	</tr>
