@@ -6,7 +6,8 @@
 				Woot! You've just received the `<?php echo strtoupper( $model->name ) ?>` badge!
 		</h3>
 
-		<div>
+		<?php if( ! YII_DEBUG ) : ?>
+			<div>
 				<table style="width:100%;" cellspacing=20>
 					<tr valign="top">
 						<td valign="top" align="right" width="50%">
@@ -18,7 +19,8 @@
 						</td>
 					</tr>
 				</table>
-		</div>
+			</div>
+		<?php endif ?>
 
 		<?php echo CHtml::link( 'keep playing', $this->createUrl( '/game/play' ), array('style' => 'font-size:10px;') ) ?>
 	</div>
