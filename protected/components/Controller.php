@@ -36,17 +36,22 @@ class Controller extends CController
 
 		if( ! array_key_exists( 'ikmq_exp', $_COOKIE ) )
 		{
-			setcookie( 'ikmq_exp', 1, time() + 86400 );
+			// TODO stupid? tell me about it ...
+			if( empty( $_COOKIE['ikmq_exp'] ) )
+			{
+				setcookie( 'ikmq_exp', 1, time() + 86400 );
 
-			session_start();
-			session_destroy();
-			session_start();
-			session_regenerate_id( true );
+				session_start();
+				session_regenerate_id( true );
+				session_destroy();
+				unset($_SESSION);
+				session_start();
+			}
 		}
 		
         // TODO this is just temporary until we come up with a 
         // better way to track users ...
-        $anonymous = AnonymousUser::model()->find( 'session_id=:session_id', array( 'session_id' => Yii::app()->session->sessionID ) );
+        $anonymous = AnonymousUser::model()->find( 'session_id=:session_id', array( ':session_id' => Yii::app()->session->sessionID ) );
 
         if( ! $anonymous )
         {

@@ -122,6 +122,20 @@ class GameController extends Controller
 					$this->anonymous->good_answers = $this->anonymous->good_answers + 1;
 					// let's add some points and increase the level
 					$this->anonymous->updateLevelScore( ($this->anonymous->level+1), $points );
+
+					// if our player just got a new badge, we
+					// display it and show some options for sharing
+					if( $this->anonymous->new_badge )
+					{
+						switch( $this->anonymous->new_badge )
+						{
+							case 'king':
+								$this->redirect( $this->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
+								break;
+							default:
+								$this->redirect( $this->createUrl( '/badge/view', array( 'id' => $this->anonymous->new_badge, 'justgotit' => 1 ) ) );
+						}
+					}
 				}
 				else
 				{

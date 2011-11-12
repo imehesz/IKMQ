@@ -78,8 +78,10 @@ class BadgeController extends Controller
 			{
 				$this->actionView( $model->id, $justgotit );
 			}
-
-			throw new CHttpException( '404', "Oops! `$name` badge doesn't exist!" );
+			else
+			{
+				throw new CHttpException( '404', "Oops! `$name` badge doesn't exist!" );
+			}
 		}
 		else
 		{

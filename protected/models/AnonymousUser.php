@@ -14,6 +14,8 @@
  */
 class AnonymousUser extends CActiveRecord
 {
+	public $new_badge = null;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return AnonymousUser the static model class
@@ -150,12 +152,11 @@ class AnonymousUser extends CActiveRecord
 				$userbadge->badge_id	= $badge->id;
 				$userbadge->save(); 
 
-				// redirect to the badge view page
-				Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
-			}
+				$this->new_badge = $badge->id;
 
-			// redirect to the badge view page
-			// Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
+				// redirect to the badge view page
+				//Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
+			}
 		}
 
 		// let's check if this update made our user the KING OF THE QUOTES
@@ -172,7 +173,8 @@ class AnonymousUser extends CActiveRecord
 				$this->updated = time();
 				$this->update();
 
-				Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
+				$this->new_badge = 'king';
+				//Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
 			}
 		}
     }
