@@ -168,20 +168,6 @@
 	</li>
 </ul>
 
-<h2>Top5 by Level</h2>
-<ul>
-<?php 
-	$top5_level_players = AnonymousUser::model()->findAll( array( 'order' => 'level DESC', 'limit' => 5 ) );
-	if( $top5_level_players )
-	{
-		foreach( $top5_level_players as $player )
-		{
-			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( substr($player->name,0,15) ) . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
-		}
-	}
-?>
-</ul>
-
 <h2>Top5 by Score</h2>
 <ul>
 <?php 
@@ -190,11 +176,26 @@
 	{
 		foreach( $top5_level_players as $player )
 		{
-			echo '<li><div class="top5-player-name">' . MUtility::twitterMe( substr($player->name,0,15) ) . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
+			echo '<li><div class="top5-player-name">' . CHtml::link(substr($player->name,0,15), $this->createUrl('/profile/view', array( 'id' => $player->id ) ) ) . '</div><div class="top5-player-score">' .  number_format( $player->score ) . '</div></li>';
 		}
 	}
 ?>
 </ul>
+
+<h2>Top5 by Level</h2>
+<ul>
+<?php 
+	$top5_level_players = AnonymousUser::model()->findAll( array( 'order' => 'level DESC', 'limit' => 5 ) );
+	if( $top5_level_players )
+	{
+		foreach( $top5_level_players as $player )
+		{
+			echo '<li><div class="top5-player-name">' . CHtml::link(substr($player->name,0,15), $this->createUrl('/profile/view', array( 'id' => $player->id ) ) ) . '</div><div class="top5-player-score">' .  number_format( $player->level ) . '</div></li>';
+		}
+	}
+?>
+</ul>
+
 <br />
 </aside>
 </div>

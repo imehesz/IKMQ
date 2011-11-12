@@ -40,7 +40,7 @@ class AnonymousUser extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('session_id', 'required'),
-			array('level, score, created, updated', 'numerical', 'integerOnly'=>true),
+			array('last_time_king, level, score, created, updated', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('session_id', 'length', 'max'=>100),
 			// The following rule is used by search().
@@ -158,13 +158,22 @@ class AnonymousUser extends CActiveRecord
 			// Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/view', array( 'id' => $badge->id, 'justgotit' => 1 ) ) );
 		}
 
+		// let's check if this update made our user the KING OF THE QUOTES
 		if( 
 			$current_number_one && 
 			$current_number_one->id != Yii::app()->controller->anonymous->id && 
 			$current_number_one->score < $this->score 
 		)
 		{
-			Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
+			// we also check if the current user had been the kind before (in the past hour)
+			if( ! $this->last_time_king || ( time() - $this->last_time_king > 3600 ) )
+			{
+				$this->last_time_king = time();
+				$this->updated = time();
+				$this->update();
+
+				Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
+			}
 		}
     }
 
