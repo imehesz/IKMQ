@@ -34,12 +34,19 @@ class Controller extends CController
 	{
 		parent::init();
 
-		if( ! array_key_exists( 'ikmq_exp', $_COOKIE ) )
+		$is_cookie = ! isset(Yii::app()->request->cookies['ikmq_exp']);
+		//if( ! array_key_exists( 'ikmq_exp', $_COOKIE ) )
+		if( $is_cookie )
 		{
 			// TODO stupid? tell me about it ...
-			if( empty( $_COOKIE['ikmq_exp'] ) )
+			// if( empty( $_COOKIE['ikmq_exp'] ) )
 			{
-				setcookie( 'ikmq_exp', 1, time() + 86400 );
+				//setcookie( 'ikmq_exp', 1, time() + 86400 );
+				$cookie = new CHttpCookie('ikmq_exp', 1 );
+				$cookie->expire = time()+86400; 
+				Yii::app()->request->cookies['ikmq_exp'] = $cookie;
+
+				//Yii::app()->request->cookies['ikmq_exp'] = new CHttpCookie('ikmq_exp',1 );
 
 				session_start();
 				session_regenerate_id( true );
