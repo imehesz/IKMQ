@@ -12,12 +12,12 @@ This will give a fair chance to new players.
 
 <hr />
 
-<h2>By Level</h2>
+<h2>By Score</h2>
 
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'cssFile' => Yii::app()->request->baseUrl . '/css/grid.css',
-	'dataProvider'=>$toplevel,
+	'dataProvider'=>$topscore,
 	'columns'=>array(
 			array(
 				'name' 	=> 'name',
@@ -47,7 +47,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		),
 	));
 ?>
-
 <hr />
 
 	<?php if( ! YII_DEBUG ) : ?>
@@ -67,12 +66,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	<?php endif ?>
 
 <hr />
-<h2>By Score</h2>
+
+<h2>By Level</h2>
 
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'cssFile' => Yii::app()->request->baseUrl . '/css/grid.css',
-	'dataProvider'=>$topscore,
+	'dataProvider'=>$toplevel,
 	'columns'=>array(
 			array(
 				'name' 	=> 'name',

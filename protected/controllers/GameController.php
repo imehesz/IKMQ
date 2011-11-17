@@ -265,7 +265,8 @@ class GameController extends Controller
 							array( 
 								'criteria' => array( 
 									'order' 	=> 'level DESC',
-									'condition'	=> 'score>0',
+									//'condition'	=> 'score>0',
+									'condition'	=> 'level>1',
 								),
 								'pagination' => array(
 									'pagesize' => $limit,
@@ -279,7 +280,8 @@ class GameController extends Controller
 							array( 
 								'criteria' => array( 
 									'order' 	=> 'score DESC',
-									'condition'	=> 'score>0',
+									//'condition'	=> 'score>0',
+									'condition'	=> 'level>1',
 								),
 								'pagination' => array(
 									'pagesize' => $limit,
