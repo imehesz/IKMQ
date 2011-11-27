@@ -43,16 +43,16 @@
 	<?php $this->widget( 'ext.EChosen.EChosen' ); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'quote'); ?>
-		<?php echo $form->textArea($model,'quote',array('rows'=>6, 'cols'=>45)); ?>
-		<?php echo $form->error($model,'quote'); ?>
-	</div>
-
-	<div class="row">
 		<?php $model->level = $model->level ? $model->level : 1; ?> 
 		<?php echo $form->labelEx($model,'level'); ?>
 		<?php echo $form->dropDownList($model,'level', range(0,25) ); ?>
 		<?php echo $form->error($model,'level'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'quote'); ?>
+		<?php echo $form->textArea($model,'quote',array('rows'=>6, 'cols'=>45)); ?>
+		<?php echo $form->error($model,'quote'); ?>
 	</div>
 
 	<?php /*
@@ -70,3 +70,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<?php Yii::app()->clientscript->registerScript( 'focusquotes', '$("#Quote_quote").focus();', CClientScript::POS_READY ) ?>
