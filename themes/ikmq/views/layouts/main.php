@@ -38,7 +38,7 @@
 <?php endif; ?>
 <div>&nbsp;</div>
 <header>
-	<div id="logo" title="IKMQ - I Know My Quotes">
+	<div id="logo" title="I KNOW QUOTES">
 		<a href="http://ikmq.mehesz.net" style="float:left;"><div class="logo-img"></div></a>
 		<?php if( ! YII_DEBUG ) : ?>
 			<script type="text/javascript"><!--

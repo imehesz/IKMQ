@@ -22,7 +22,7 @@
 <table width="100%">
 	<tr valign="top">
 		<td width="200px">
-			<div class="profile-percent">
+			<div class="profile-percent" title="<?php echo Yii::t( 'global', 'Accuracy' ) ?>">
 			<?php
 				if( $model->good_answers > 0 || $model->bad_answers > 0 )
 				{
@@ -68,7 +68,7 @@
 <table width="100%">
 	<tr>
 		<td width="200px">
-			<div class="profile-percent">
+			<div class="profile-percent" title="<?php echo Yii::t('global' , 'Number of Badges') ?>">
 				<?php 
 
 					if( AnonymousUser::getNumberOne() && AnonymousUser::getNumberOne()->id == $model->id )

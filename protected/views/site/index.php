@@ -1,3 +1,23 @@
+<?php Yii::app()->clientscript->registerScriptFile( Yii::app()->request->baseUrl . '/js/jquery.tweet.js', CClientScript::POS_END ) ?>
+<?php Yii::app()->clientscript->registerCssFile( Yii::app()->request->baseUrl . '/css/tweet.css' ) ?>
+<?php Yii::app()->clientscript->registerScript( 'twitterscript', <<<TWEET
+jQuery(function($){
+	$(".tweet").tweet({
+		join_text: "auto",
+		username: "I_Know_Quotes",
+		avatar_size: 48,
+		count: 5,
+		auto_join_text_default: "",
+		auto_join_text_ed: "we",
+		auto_join_text_ing: "we were",
+		auto_join_text_reply: "we replied",
+		auto_join_text_url: "we were checking out",
+		loading_text: "loading tweets..."
+	});
+});
+TWEET
+, CClientScript::POS_READY ) ?>
+
 <?php $this->pageTitle=Yii::app()->name; ?>
 <?php $welcomes = array( 'Hello', 'Hello there', 'Welcome', 'Howdy', 'Hey', 'Hey there' ); ?>
 <p>
@@ -24,4 +44,14 @@
 			</td>
 		</tr>
 	</table>
+</p>
+
+<hr />
+
+<div style="text-align:center;">
+	<?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/twitter-ani.gif', 'I Know Quotes' ), 'http://twitter.com/I_Know_Quotes', array( 'target' => '_blank' ) ) ?>
+</div>
+
+<p>
+<div class="tweet"> </div>
 </p>
