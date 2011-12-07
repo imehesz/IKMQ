@@ -28,21 +28,6 @@
 	</div>
 <?php endif ?>
 
-<?php if( ! YII_DEBUG ) : ?>
-	<div style="text-align:center;">
-		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-1319358860215477";
-		/* ikmq - middle */
-		google_ad_slot = "9677305935";
-		google_ad_width = 468;
-		google_ad_height = 60;
-		//-->
-		</script>
-		<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
-	</div>
-<?php endif ?>
 
 
 <table width="650px">
@@ -66,5 +51,32 @@
 			</p>
 		</td>
 	</tr>
+
+<?php if( ! YII_DEBUG ) : ?>
+	<tr>
+		<td colspan="2">
+			<hr />
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="2">
+			<div style="text-align:center;">
+				<script type="text/javascript"><!--
+				google_ad_client = "ca-pub-1319358860215477";
+				/* ikmq - middle */
+				google_ad_slot = "9677305935";
+				google_ad_width = 468;
+				google_ad_height = 60;
+				//-->
+				</script>
+				<script type="text/javascript"
+				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+				</script>
+			</div>
+		</td>
+	</tr>
+<?php endif ?>
+
 </table>
 
