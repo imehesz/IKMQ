@@ -42,6 +42,6 @@
 	</div>
 
 	<script>
-		var t=setInterval("jQuery('#ad_holder_on_play').html( jQuery('#ad_holder_on_play').html() );",7000);
+		//var t=setInterval("jQuery('#ad_holder_on_play').html( jQuery('#ad_holder_on_play').html() );",7000);
 	</script>
 <?php endif ?>
