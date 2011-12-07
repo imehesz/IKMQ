@@ -49,7 +49,7 @@
 	<tr>
 		<td valign="top" width="10px">
 			<?php
-				$image = $model->picture ?: 'badge.png';
+				$image = $model->picture ? $model->picture : 'badge.png';
 				echo CHtml::image( 
 					Yii::app()->request->baseUrl . 
 					'/image.php?width=200&height=200&image='. Yii::app()->request->baseUrl . '/images/badges/' . $image , null, array( 'title' => $model->name, 'width' => 200, 'height' => 200 ) ) . ' '; 
