@@ -6,7 +6,7 @@
 				Woot! You've just received the `<?php echo strtoupper( $model->name ) ?>` badge!
 		</h3>
 
-		<?php if( ! YII_DEBUG ) : ?>
+		<?php if( 1==1 || ! YII_DEBUG ) : ?>
 			<div>
 				<table style="width:100%;" cellspacing=20>
 					<tr valign="top">
@@ -14,8 +14,12 @@
 							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/profile/view/', array( 'id' => $this->anonymous->id ) ) ?>" data-text="Just received the <?php echo strtoupper( $model->name ) ?> badge on IKnowQuotes! <?php echo Yii::app()->createAbsoluteUrl( '/profile/view/', array( 'id' => $this->anonymous->id ) ) ?> #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script> 
 						</td>
 						<td valign="top" align="left" width="50%">
+						<?php /*
+							// THIS IS THE OLD FACEBOOK SHARE!
 							<a name="fb_share" share_url="<?php echo $this->createAbsoluteUrl('/profile/view/', array( 'id' => $this->anonymous->id ) )?>">facebook</a> 
 							<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+						*/ ?>
+							<?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_share.png' ) , 'javascript:void(0)', array( 'onclick' => 'window.open("' . $this->createUrl( '/site/facebookshare' ) . '","Ratting","width=600,height=300,0,status=0,");', 'name' => 'Facebook Share', 'title' => 'Facebook Share' ) ) ?>
 						</td>
 					</tr>
 				</table>

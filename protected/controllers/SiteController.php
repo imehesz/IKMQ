@@ -32,6 +32,77 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+	public function actionFacebookShare()
+	{
+		$badge = null;
+
+		// the latest badge, we don't care if they share it 
+		// even multiple times.
+		if( ! $badge )
+		{
+			$badge_found = AssocUserBadge::model()->find( 'user_id=:user_id', array( ':user_id' => $this->anonymous->id ) );
+			if( $badge_found )
+			{
+				$badge = Badge::model()->findByPk( $badge_found->badge_id );
+			}
+		}
+
+		if( $badge )
+		{
+			// we need to get the last badge by this user, because 
+			// that's what we're gonna show on the facebook page
+
+			Yii::import( 'ext.facebook.fb.src.*' );
+
+			$app_id = Yii::app()->params['facebook']['app_id'];
+			$app_secret = Yii::app()->params['facebook']['app_secret'];
+
+			// Init facebook api.
+			$facebook = new Facebook(array(
+				'appId' => $app_id,
+				'secret' => $app_secret,
+				'cookie' => true
+			));
+
+			// Get the url to redirect for login to facebook
+			// and request permission to write on the user's wall.
+			$login_url = $facebook->getLoginUrl(
+				array('scope' => 'publish_stream')
+			);
+
+			// If not authenticated, redirect to the facebook login dialog.
+			// The $login_url will take care of redirecting back to us
+			// after successful login.
+			if (! $facebook->getUser()) 
+			{
+					echo <<< EOT
+					<script type="text/javascript">
+							top.location.href = "$login_url";
+					</script>;
+EOT;
+
+					exit;
+			}
+
+			// Do the wall post.
+			$facebook->api("/me/feed", "post", array(
+        		'messawge' => Yii::t('global', "I just received the `{badge_name}` badge on http://IKnowQuotes.com", array( '{badge_name}' => strtoupper( $badge->name ) ) ),
+        		'picture' => Yii::app()->request->baseUrl . '/images/badges/' . $badge->picture,
+       			'link' => $this->createAbsoluteUrl( '/profile/view', array( 'id' => $this->anonymous->id ) ),
+       			'name' => 'IKQ - I Know Quotes',
+       			'caption' => 'IKQ - I Know Quotes'
+			));
+
+			echo <<< EOT2
+			<script type="text/javascript">
+					window.close();
+			</script>;
+EOT2;
+			Yii::app()->end();
+
+		}
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
