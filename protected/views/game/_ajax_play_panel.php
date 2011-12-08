@@ -16,7 +16,16 @@
 	<hr />
 	<div style="text-align:center;">
 		<blockquote>
-			<?php echo $quote->quote ?>
+			<?php if( strstr( $quote->quote, '.jpg' ) || strstr( $quote->quote, '.png' ) || strstr( $quote->quote, '.gif' ) ) : ?>
+				<?php 
+					echo CHtml::image( 
+						Yii::app()->request->baseUrl . 
+						'/image.php?width=200&height=150&image='. Yii::app()->request->baseUrl . '/files/quotes/' . trim( $quote->quote ), null ); 
+
+				?>
+			<?php else : ?>
+				<?php echo $quote->quote ?>
+			<?php endif ?>
 		</blockquote>
 	</div>
 	<hr />
