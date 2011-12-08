@@ -19,7 +19,8 @@
 							<a name="fb_share" share_url="<?php echo $this->createAbsoluteUrl('/profile/view/', array( 'id' => $this->anonymous->id ) )?>">facebook</a> 
 							<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
 						*/ ?>
-							<?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_share.png' ) , 'javascript:void(0)', array( 'onclick' => 'window.open("' . $this->createUrl( '/site/facebookshare' ) . '","Ratting","width=600,height=300,0,status=0,");', 'name' => 'Facebook Share', 'title' => 'Facebook Share' ) ) ?>
+							<?php //echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_share.png' ) , 'javascript:void(0)', array( 'onclick' => 'window.open("' . $this->createUrl( '/site/facebookshare' ) . '","Ratting","width=600,height=300,0,status=0,");', 'name' => 'Facebook Share', 'title' => 'Facebook Share' ) ) ?>
+							<?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_share.png' ) , 'javascript:void(0)', array( 'onclick' => 'window.open("' .  Yii::app()->request->baseUrl . '/fb.php?badge_name=' . $model->name . '&badge_image=' . $model->picture . '","Ratting","width=600,height=300,0,status=0,");', 'name' => 'Facebook Share', 'title' => 'Facebook Share' ) ) ?>
 						</td>
 					</tr>
 				</table>
