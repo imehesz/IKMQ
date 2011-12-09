@@ -13,8 +13,8 @@ else
 	$base_url = 'http://iknowquotes.com/';
 }
 
-$app_id = $config['facebook']['app_id'];
-$app_secret = $config['facebook']['app_secret'];
+$app_id = $config['params']['facebook']['app_id'];
+$app_secret = $config['params']['facebook']['app_secret'];
 
 $badge_name = $_GET['badge_name'];
 $badge_image = $_GET['badge_image'];
@@ -54,4 +54,10 @@ $facebook->api("/me/feed", "post", array(
         name => "IKQ - I Know Quotes",
         caption => "IKQ - I Know Quotes"
 ));
+
+        echo <<< EOT2
+        <script type="text/javascript">
+                window.close();
+        </script>;
+EOT2;
 
