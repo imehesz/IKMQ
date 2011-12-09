@@ -61,6 +61,7 @@ class MovieController extends Controller
 	 */
 	public function actionCreate()
 	{
+		Yii::app()->theme = 'classic';
 		$model=new Movie;
 
 		// Uncomment the following line if AJAX validation is needed

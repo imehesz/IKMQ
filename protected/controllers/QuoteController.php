@@ -61,6 +61,7 @@ class QuoteController extends Controller
 	 */
 	public function actionCreate()
 	{
+		Yii::app()->theme = 'classic';
 		$model=new Quote;
 
 		// Uncomment the following line if AJAX validation is needed
