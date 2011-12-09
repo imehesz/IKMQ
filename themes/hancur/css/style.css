@@ -1,0 +1,62 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #350f24;
+}
+
+#container {
+	width:520px; height:650px;
+	overflow:hidden;	
+	background: url(../images/infobg.png) no-repeat;
+	z-index:88;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+
+#datas {
+	width:445px; height:350px; overflow:auto;
+	position:absolute;
+	top:120px;
+	left:40px;
+	font-size:14px;
+	color:#333;
+	line-height:18px;
+}
+
+
+#gamemask {
+	width:520px; height:650px;
+	overflow:hidden;	
+	background: url(../images/hancurbg.png) no-repeat;
+	z-index:88;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+#imageloader {
+	position:absolute;
+	top:115px;
+	left:24px;
+	z-index:77px;
+}
+#imageloader img {
+	border:none;
+	width:480px;
+}
+
+#answer1, #answer2, #answer3 {
+	width:140px; height:50px;
+	z-index:99;
+	position:absolute;
+	top:490px;
+	cursor:pointer;
+	border:none;
+}
+#answer1 {left:40px;}
+#answer2 {left:194px;}
+#answer3 {left:345px;}
+
+
