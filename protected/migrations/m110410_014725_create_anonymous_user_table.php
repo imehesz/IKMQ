@@ -14,7 +14,7 @@ class m110410_014725_create_anonymous_user_table extends CDbMigration
 			'score' 	=> 'integer',
 			'created' 	=> 'integer',
 			'updated' 	=> 'integer'
-		), 'DEFAULT CHARSET=utf8' );
+		), 'ENGINE=InnoDB DEFAULT CHARSET=utf8' );
 	}
 
 	public function down()
