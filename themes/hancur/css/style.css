@@ -59,4 +59,7 @@ body {
 #answer2 {left:194px;}
 #answer3 {left:345px;}
 
-
+.label-wrapper
+{
+	text-align:center;
+}
