@@ -17,4 +17,7 @@ Olvasd el a <a href="rule">Játékszabályt</a>, és kezdődhet is a játék! Ot
 
 </p>
 
+<a name="fb_share" share_url="http://www.facebook.com/pages/Hanc%C3%BAr-P%C3%A1rbaj/169631076468590?sk=app_208195102528120&app_data=dlt">facebook</a> 
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+
 </div>
