@@ -50,7 +50,7 @@
 				<?php 
 					echo CHtml::image( 
 						Yii::app()->request->baseUrl . 
-						'/image.php?width=480&height=550&image='. Yii::app()->request->baseUrl . '/files/quotes/' . trim( $quote->quote ), null ); 
+						'/image.php?image='. Yii::app()->request->baseUrl . '/files/quotes/' . trim( $quote->quote ), null ); 
 
 				?>
 			<?php else : ?>
