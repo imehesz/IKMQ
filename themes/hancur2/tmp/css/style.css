@@ -1,0 +1,100 @@
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #350f24;
+}
+#container {
+	width:520px;
+	background:#fff;
+}
+#topmenu {
+	width:495px; height:57px;
+	padding-top:82px;
+	padding-left:25px;
+	background:url(../images/hancurtop.png) no-repeat;
+}
+#topmenu ul li {
+	display:inline;
+	margin-right:8px;
+}
+#topmenu ul li a {
+	color: #fff;
+	text-decoration:none;
+	font-weight:bold;
+	font-size:14px;
+}
+#topmenu ul li a:hover {
+	text-shadow: #3c0e20 1px 1px;
+}
+#gamemask {
+	width:520px; height:500px; 
+	position:relative;
+	overflow:hidden;	
+	background: url(../images/hancurbg.png) bottom no-repeat;
+	z-index:88;
+}
+#maincontent {
+	width:440px; min-height:500px;
+	padding: 20px 40px 20px 40px; 
+	position:relative;	
+	background: url(../images/hancurbg.png) bottom no-repeat;
+	text-align:center;
+	color:#4c4c4c;
+	font-size:16px;
+}
+#maincontent p {text-align:justify; font-size:14px; line-height:18px; margin-bottom:70px;}
+#maincontent p a {color:#b16187; text-decoration:none;}
+#maincontent p a:hover { text-decoration:underline; }
+
+#imageloader {
+	width:480px; height:480px;
+	position:absolute;
+	overflow:hidden;
+	top:139px;
+	left:21px;
+	z-index:77px;
+}
+#imageloader img {
+	border:none;
+	width:480px;
+}
+#answer1, #answer2, #answer3 {
+	width:140px; height:50px;
+	z-index:99;
+	position:absolute;
+	top:490px;
+	cursor:pointer;
+	border:none;
+}
+#answer1 {left:40px;}
+#answer2 {left:194px;}
+#answer3 {left:345px;}
+
+#answer1, #answer2, #answer3 {
+	width:140px; height:50px;
+	z-index:99;
+	position:absolute;
+	top:490px;
+	cursor:pointer;
+	border:none;
+}
+
+#pickone {
+	width:195px; height:30px;
+	background:url(../images/valassz.png) no-repeat;
+	position: absolute;
+	left:160px;
+	bottom:30px;
+	z-index:9999;
+}
+
+#pickoneanswer {
+	width:445px; height:50px;
+	z-index:8888;
+	position:absolute;
+	top:240px;
+	border:none;
+	left:40px
+}

@@ -1,0 +1,5 @@
+Options FollowSymLinks 
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule .* $0\.php [L]
