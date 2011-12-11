@@ -4,7 +4,7 @@
 <p>
 <u>MIRŐL SZÓL A JÁTÉK?</u><br />
 
-Fel kell ismerned a fehérnemű márkákat! Feltöltöttünk 15 márka 50 termékének képet (ezt később majd folyamatosan bővítjük). Egy képhez három válasz lehetőség tartozik. Neked pedig el kell találnod, hogy a látható fehérnemű melyik márkához tartozik. Előre szólunk, nem könnyű! A pontok különböző szorzók által kerülnek jóváírásra. Ha gyors vagy, magasabb lesz a pontszámod, ha lassú, akkor mínuszba is átmehetsz! 15 mp várakozás után mínusz pontot kapsz! Ha gyors vagy, több pontot kapsz.<br /><br />
+Fel kell ismerned a fehérnemű márkákat! Feltöltöttünk 15 márka 50 termékének képet (ezt később majd folyamatosan bővítjük). Egy képhez három válasz lehetőség tartozik. Neked pedig el kell találnod, hogy a látható fehérnemű melyik márkához tartozik. Előre szólunk, nem könnyű! A pontok különböző szorzók által kerülnek jóváírásra. Ha gyors vagy, magasabb lesz a pontszámod, ha lassú, akkor mínuszba is átmehetsz! 15 mp várakozás után mínusz pontot kapsz! Minden egyes rossz válasz esetén is minusz pont jár. Tehát ha mondjuk 20 másodperc alatt valahonnan sikerül levadásznod, hogy ez egy <b>Victoria's Secret</b> fehérnemű, de mégsem az, akkor sajnos nagyon gyorsan minuszban találhatod magad! Ha gyors vagy, több pontot kapsz.<br /><br />
 A játéknak sosincs vége! A képek ismétlődnek, akár máshogy is válaszolhatsz. Talán másodikra lesz jó!
 Játsz minél többet, az eredményedet oszt meg az ismerőseiddel, és ha Te vezeted a toplistát a játék zárásakor, akkor Tiéd a nyeremény! Arra figyelj, ne legyél mínuszban!<br /><br />
 
