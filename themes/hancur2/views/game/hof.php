@@ -10,7 +10,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			array(
 				'name' 	=> 'Név',
 				//'value'	=> 'strpos($data->name,"@") === 0 ? MUtility::twitterMe( $data->name ) : substr($data->name,0,20)',
-				'value' => 'CHtml::link( substr($data->name,0,20), Yii::app()->controller->createUrl( "/profile/view", array( "id" => $data->id ) ) )',
+				'value' => 'CHtml::link( (strpos( $data->name, "@" ) ? substr( $data->name, 0, strpos($data->name, "@" ) ) : $data->name ), Yii::app()->controller->createUrl( "/profile/view", array( "id" => $data->id ) ) )',
 				'type'	=> 'raw',
 				'sortable'	=> false,
 			),

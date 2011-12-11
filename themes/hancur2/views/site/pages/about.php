@@ -3,8 +3,11 @@
 <b>JÁTÉKSZABÁLY</b><br /><br />
 <p>
 <u>MIRŐL SZÓL A JÁTÉK?</u><br />
-Fel kell ismerned a fehérnemű márkákat! Feltöltöttünk 10 márka 5-5 képét, összesen 50 képet. Ezt később majd folyamatosan bővítjük. egy képhez három válasz lehetőség tartozik. Neked pedig meg el kell találnod, hogy a képen látható fehérnemű melyik márkához tartozik. Előre szólunk, nem minidg könnyű! A pontok különböző szorzók által kerülnek jóváírásra. Ha gyors vagy, magasabb lesz a pontszámod, ha lassú, akkor akár mínuszba is átmehetsz!<br />
-Játszd végig a játékot, az eredményedet oszt meg az ismerőseiddel, és ha Te vezeted a toplistát, akkor Tiéd a nyeremény!<br /><br />
+
+Fel kell ismerned a fehérnemű márkákat! Feltöltöttünk 15 márka 50 termékének képet (ezt később majd folyamatosan bővítjük). Egy képhez három válasz lehetőség tartozik. Neked pedig el kell találnod, hogy a látható fehérnemű melyik márkához tartozik. Előre szólunk, nem könnyű! A pontok különböző szorzók által kerülnek jóváírásra. Ha gyors vagy, magasabb lesz a pontszámod, ha lassú, akkor mínuszba is átmehetsz! 15 mp várakozás után mínusz pontot kapsz! Ha gyors vagy, több pontot kapsz.<br /><br />
+A játéknak sosincs vége! A képek ismétlődnek, akár máshogy is válaszolhatsz. Talán másodikra lesz jó!
+Játsz minél többet, az eredményedet oszt meg az ismerőseiddel, és ha Te vezeted a toplistát a játék zárásakor, akkor Tiéd a nyeremény! Arra figyelj, ne legyél mínuszban!<br /><br />
+
 A termék ára <b>7990 Ft</b>, így amit a társasra költöttél, le is vásárolhatod a <a target="_blank" href="http://goo.gl/iBy0h">Lingeerie.eu</a> fehérnemű áruházban!
 <br /><br /><br />
 
