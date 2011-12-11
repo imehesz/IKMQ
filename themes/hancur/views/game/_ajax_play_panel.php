@@ -13,22 +13,6 @@
 
 	<!-- new type quote -->
 	<div>
-	<?php /* <hr /> */ ?>
-	<div style="text-align:center;">
-		<blockquote>
-			<?php if( strstr( $quote->quote, '.jpg' ) || strstr( $quote->quote, '.png' ) || strstr( $quote->quote, '.gif' ) ) : ?>
-				<?php 
-					echo CHtml::image( 
-						Yii::app()->request->baseUrl . 
-						'/image.php?width=175&height=250&image='. Yii::app()->request->baseUrl . '/files/quotes/' . trim( $quote->quote ), null ); 
-
-				?>
-			<?php else : ?>
-				<?php echo $quote->quote ?>
-			<?php endif ?>
-		</blockquote>
-	</div>
-	<?php /* <hr /> */ ?>
 	</div>
 	<!-- new type quote -->
 
@@ -39,14 +23,22 @@
 			echo CHtml::hiddenField( 'ticktack', time() );
 			echo CHtml::hiddenField( 'rendered_movies_list', $model->rendered_movies_list );
 		?>
+
+		<?php $i=1; foreach( $model->movies as $movie ) : ?>
+			<div class="movie-wrapper" id="movie_<?php echo $movie->id ?>">
+				<div id="answer<?php echo $i++ ?>">
+					<?php
+						echo CHtml::image( 
+							Yii::app()->request->baseUrl . 
+							'/image.php?width=140&height=50&image='. Yii::app()->request->baseUrl . '/' . Yii::app()->params['moviescreenshots'] . $movie->pic, null, array( 'title' => $movie->title, 'width' => 140, 'height' => 50 ) ); 
+					?>
+				</div>
+			</div>
+		<?php endforeach ?>
+
+
+		<?php /*
 		<div class="play-area-wrapper">
-			<?php /*
-			<div id="pickone_banner" style="height:60px;overflow:hidden;">
-				<?php echo CHtml::image( Yii::app()->request->baseUrl . '/images/pickone.png' ) ?>
-			</div>
-			*/ ?>
-			<div id="pickone_ad_banner" style="margin:0 auto;display:none;height:60px;overflow:hidden;">
-			</div>
 			<table width="100%">
 				<tr>
 			<?php foreach( $model->movies as $movie ) : ?>
@@ -59,11 +51,6 @@
 										'/image.php?width=140&height=50&image='. Yii::app()->request->baseUrl . '/' . Yii::app()->params['moviescreenshots'] . $movie->pic, null, array( 'title' => $movie->title, 'width' => 140, 'height' => 50 ) ) . ' '; 
 							?>
 						</div>
-						<?php /*
-						<div class="movie-title">
-							<?php echo $movie->title ?>
-						</div>
-						*/ ?>
 					</div>
 				</td>
 			<?php endforeach ?>
@@ -72,7 +59,24 @@
 			</tr>
 			</table>
 		</div>
+		*/ ?>
 	<?php echo CHtml::endForm(); ?>
+
+	<div id="gamemask"></div>
+
+	<div class="imageloader">
+			<?php if( strstr( $quote->quote, '.jpg' ) || strstr( $quote->quote, '.png' ) || strstr( $quote->quote, '.gif' ) ) : ?>
+				<?php 
+					echo CHtml::image( 
+						Yii::app()->request->baseUrl . 
+						'/image.php?width=500&height=550&image='. Yii::app()->request->baseUrl . '/files/quotes/' . trim( $quote->quote ), null ); 
+
+				?>
+			<?php else : ?>
+				<?php echo $quote->quote ?>
+			<?php endif ?>
+	</div>
+
 
 <script language="javascript">
 	jQuery(document).ready(function()

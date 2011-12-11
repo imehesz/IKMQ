@@ -1,4 +1,3 @@
-<div id="datas">
 <?php
 	Yii::app()->clientScript->registerScript( 'gamecontrollerpath', "var gamecontrollerpath='" . Yii::app()->controller->createAbsoluteUrl( '/game/' ) . "'", CClientScript::POS_HEAD );
 ?>
@@ -24,4 +23,3 @@
 		updateAjaxPlayPanel();
 	});
 </script>
-</div>

@@ -8,13 +8,6 @@
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/ikmq.js"></script>
 </head>
 <body>
-
-	<div id="container">
-		<?php echo $content ?>
-		<!--Menu BTN-->
-		<div id="answer1"><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl ?>/images/fooldal.png" /></a></div>
-		<div id="answer2"><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl ?>/images/profil.png" /></a></div>
-		<div id="answer3"><a href="#"><img src="<?php echo Yii::app()->theme->baseUrl ?>/images/toplista.png" /></a></div>
-	</div>
+	<?php echo $content ?>
 </body>
 </html>
