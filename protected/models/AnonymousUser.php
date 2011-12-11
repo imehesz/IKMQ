@@ -138,6 +138,11 @@ class AnonymousUser extends CActiveRecord
 		// let's check if we have a badge for this level ...
 		$badge = Badge::model()->find( 'level=:level', array( ':level' => $newlevel ) );
 
+		if( Yii::app()->params['usebadges'] == false )
+		{
+			$badge = null; // quick fix, we don't use badges TODO make this better
+		}
+
 		if( $badge )
 		{
 			// if there is already a badge for this user we won't create it again
@@ -159,23 +164,27 @@ class AnonymousUser extends CActiveRecord
 			}
 		}
 
-		// let's check if this update made our user the KING OF THE QUOTES
-		if( 
-			$current_number_one && 
-			$current_number_one->id != Yii::app()->controller->anonymous->id && 
-			$current_number_one->score < $this->score 
-		)
+		// we only care if we use badges ...
+		if( Yii::app()->params['usebadges'] == true )
 		{
-			// we also check if the current user had been the kind before (in the past hour)
-			if( ! $this->last_time_king || ( time() - $this->last_time_king > 3600 ) )
-			{
-				$this->last_time_king = time();
-				$this->updated = time();
-				$this->update();
+				// let's check if this update made our user the KING OF THE QUOTES
+				if( 
+					$current_number_one && 
+					$current_number_one->id != Yii::app()->controller->anonymous->id && 
+					$current_number_one->score < $this->score 
+				)
+				{
+					// we also check if the current user had been the kind before (in the past hour)
+					if( ! $this->last_time_king || ( time() - $this->last_time_king > 3600 ) )
+					{
+						$this->last_time_king = time();
+						$this->updated = time();
+						$this->update();
 
-				$this->new_badge = 'king';
-				//Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
-			}
+						$this->new_badge = 'king';
+						//Yii::app()->controller->redirect( Yii::app()->controller->createUrl( '/badge/king', array( 'justgotit' => 1 ) ) );
+					}
+				}
 		}
     }
 
