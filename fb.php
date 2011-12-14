@@ -19,6 +19,11 @@ $app_secret = $config['params']['facebook']['app_secret'];
 $badge_name = $_GET['badge_name'];
 $badge_image = $_GET['badge_image'];
 
+if( $badge_name == 'king' )
+{
+	$badge_name = 'King Of Quotes';
+}
+
 // Init facebook api.
 $facebook = new Facebook(array(
                                                 'appId' => $app_id,
@@ -48,8 +53,8 @@ EOT;
 
 // Do the wall post.
 $facebook->api("/me/feed", "post", array(
-        message => "Just received `" . strtoupper( $badge_name ) . "` badge on this website ... TEST.",
-        picture => $base_url . '/images/badges/' . $badge_image ,
+        message => "Just received the `" . strtoupper( $badge_name ) . "` badge on http://IknowQuotes.com. Can you?",
+        picture => $base_url . '/images/badges/' . $badge_image,
         link => $base_url . '/badge/' . $badge_name,
         name => "IKQ - I Know Quotes",
         caption => "IKQ - I Know Quotes"

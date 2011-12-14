@@ -6,7 +6,7 @@
 				Woot! You've just received the `<?php echo strtoupper( $model->name ) ?>` badge!
 		</h3>
 
-		<?php if( 1==1 || ! YII_DEBUG ) : ?>
+		<?php if( ! YII_DEBUG ) : ?>
 			<div>
 				<table style="width:100%;" cellspacing=20>
 					<tr valign="top">

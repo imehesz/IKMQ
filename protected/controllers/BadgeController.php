@@ -95,6 +95,12 @@ class BadgeController extends Controller
 		{
 			$this->renderPartial( 'king' );
 		}
+		else
+		{
+			// if we got here it means somebody is trying to get to the KING OF THE QUOTES page
+			// let's load the Curren't King's profile
+			$this->redirect( $this->createUrl( '/profile/view', array( 'id' => AnonymousUser::model()->getNumberOne()->id ) ) );
+		}
 	}
 
 	/**
