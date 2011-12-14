@@ -15,6 +15,9 @@ class MovieController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			array(
+				'application.components.AdminThemeFilter + admin,create,update,view,index'
+			)
 		);
 	}
 
@@ -61,7 +64,6 @@ class MovieController extends Controller
 	 */
 	public function actionCreate()
 	{
-		Yii::app()->theme = 'classic';
 		$model=new Movie;
 
 		// Uncomment the following line if AJAX validation is needed

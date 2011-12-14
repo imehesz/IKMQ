@@ -15,6 +15,9 @@ class QuoteController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			array(
+				'application.components.AdminThemeFilter + admin,create,update,view,index'
+			)
 		);
 	}
 
@@ -63,7 +66,6 @@ class QuoteController extends Controller
 	 */
 	public function actionCreate()
 	{
-		Yii::app()->theme = 'classic';
 		$model=new Quote;
 
 		// Uncomment the following line if AJAX validation is needed

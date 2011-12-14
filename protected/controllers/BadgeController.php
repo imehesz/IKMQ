@@ -15,6 +15,10 @@ class BadgeController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
+			array(
+				'application.components.AdminThemeFilter + admin,create,update,index'
+			)
+
 		);
 	}
 
