@@ -45,7 +45,7 @@ if (! $facebook->getUser())
         echo <<< EOT
         <script type="text/javascript">
                 top.location.href = "$login_url";
-        </script>;
+        </script>
 EOT;
 
         exit;
@@ -53,16 +53,15 @@ EOT;
 
 // Do the wall post.
 $facebook->api("/me/feed", "post", array(
-        message => "Just received the `" . strtoupper( $badge_name ) . "` badge on http://IknowQuotes.com. Can you?",
-        picture => $base_url . '/images/badges/' . $badge_image,
-        link => $base_url . '/badge/' . $badge_name,
-        name => "IKQ - I Know Quotes",
-        caption => "IKQ - I Know Quotes"
+        'message' => "I just earned the `" . strtoupper( $badge_name ) . "` badge on http://IknowQuotes.com. Can you?",
+        'picture' => $base_url . '/images/badges/' . $badge_image,
+        'link' => $base_url . '/badge/' . $badge_name,
+        'name' => 'IKQ -' . strtoupper( $badge_name ) . ' BADGE',
+        'caption' => "IKQ - I Know Quotes"
 ));
 
         echo <<< EOT2
         <script type="text/javascript">
                 window.close();
-        </script>;
+        </script>
 EOT2;
-
