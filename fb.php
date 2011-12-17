@@ -10,7 +10,13 @@ if( ! empty( $_SERVER['HTTP_HOST'] ) )
 }
 else
 {
-	$base_url = 'http://iknowquotes.com/';
+	$base_url = 'http://iknowquotes.com';
+}
+
+// if we have a subdirectory set, we use it ...
+if( array_key_exists( 'subdir', $config['params'] ) && $config[ 'params' ]['subdir'] )
+{
+	$base_url .= '/' . $config['params']['subdir'];
 }
 
 $app_id = $config['params']['facebook']['app_id'];
