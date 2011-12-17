@@ -26,6 +26,7 @@
 
 
 <?php if( ! YII_DEBUG) : ?>
+	<hr />
 
 	<div style="text-align:center;" id="ad_holder_on_play">
 		<script type="text/javascript"><!--
