@@ -39,8 +39,9 @@
 <div>&nbsp;</div>
 <header>
 	<div id="logo" title="I KNOW QUOTES">
-		<a href="http://ikmq.mehesz.net" style="float:left;"><div class="logo-img"></div></a>
+		<a href="http://iknowquotes.com" style="float:left;"><div class="logo-img"></div></a>
 		<?php if( ! YII_DEBUG ) : ?>
+			<div class="top-ad">
 			<script type="text/javascript"><!--
 				google_ad_client = "ca-pub-1319358860215477";
 				/* IKMQ - Big */
@@ -52,6 +53,7 @@
 				<script type="text/javascript"
 				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 			</script>
+			</div>
 		<?php endif; ?>
 		<div style="clear:both;"></div>
 <!--<hgroup>

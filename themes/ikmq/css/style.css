@@ -20,7 +20,6 @@ display: block;
 
 }
 #logo {
-padding: 15px 0px 15px 20px;
 background: #fff;
 
 			-moz-border-radius: 0.8em;
@@ -29,6 +28,13 @@ background: #fff;
 }
 #logo a:active {
 background: transparent !important;
+}
+
+.top-ad
+{
+	width:710px;
+	overflow:hidden;
+	padding-top:25px;
 }
 
 
@@ -381,9 +387,9 @@ blockquote
 
 .logo-img
 {
-	width: 200px;
-	height: 100px;
-	background: url( ../../../images/ikq_logo_175x100.png ) no-repeat;
+	width: 250px;
+	height: 145px;
+	background: url( ../../../images/ikq_logo_250x145.png ) no-repeat;
 }
 
 .badge-descr
