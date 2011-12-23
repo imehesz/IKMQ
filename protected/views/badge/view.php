@@ -82,14 +82,32 @@
 		</td>
 	</tr>
 <?php endif ?>
+	<tr>
+		<td colspan="2"><hr /></td>
+	</tr>
+	<tr>
+		<?php if( isset( $recently_awarded ) && ! empty( $recently_awarded ) ) : ?>
+			<td>
+				<h3>
+					<?php echo Yii::t( 'global', 'Recently Awarded' ) ?>
+				</h3>
+			</td>
+
+			<td>
+				<ul class="awards">
+				<?php foreach( $recently_awarded as $awarded ) : ?>
+					<?php 
+						// TODO wtf? can't access user through ActiveRecord 
+						$u = AnonymousUser::model()->findByPk( $awarded->user_id );
+					?>
+					<li>
+						<?php echo CHtml::link( $u->name, $this->createUrl( '/profile/view', array( 'id' => $u->id ) ) ) ?>
+						 <span class="award-date">on <?php echo date( 'M. j', $awarded->created ) ?></span>
+					</li>
+				<?php endforeach ?>
+				</ul>
+			</td>
+		<?php endif ?>
+	</tr>
 </table>
 
-<?php if( isset( $recently_awarded ) && ! empty( $recently_awarded ) ) : ?>
-	<h2>
-		<?php echo Yii::t( 'global', 'Recently Awarded' ) ?>
-	</h2>
-
-	<?php foreach( $recently_awarded as $awarded ) : ?>
-		<?php echo $awarded->user_id ?>
-	<?php endforeach ?>
-<?php endif ?>

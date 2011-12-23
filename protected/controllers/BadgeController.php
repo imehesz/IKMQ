@@ -59,7 +59,7 @@ class BadgeController extends Controller
 		$criteria = new CDbCriteria;
 		$criteria->condition 	= 'badge_id=:badge_id';
 		$criteria->order 		= 'created DESC';
-		$criteria->limit		= 5;
+		$criteria->limit		= 10;
 		$criteria->params 		= array( ':badge_id' => $id ); 
 
 		$recently_awarded = AssocUserBadge::model()->findAll( $criteria );
