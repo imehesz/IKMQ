@@ -56,6 +56,14 @@ class BadgeController extends Controller
 	{
 		$model = $this->loadModel( $id );
 
+		$criteria = new CDbCriteria;
+		$criteria->condition 	= 'badge_id=:badge_id';
+		$criteria->order 		= 'created DESC';
+		$criteria->limit		= 5;
+		$criteria->params 		= array( ':badge_id' => $id ); 
+
+		$recently_awarded = AssocUserBadge::model()->findAll( $criteria );
+
 		if( $justgotit )
 		{
 			$this->renderPartial( 'view',array(
@@ -68,6 +76,7 @@ class BadgeController extends Controller
 		{
 			$this->render( 'view',array(
 				'model' => $model,
+				'recently_awarded' => $recently_awarded
 			));
 		}
 	}

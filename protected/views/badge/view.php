@@ -82,6 +82,14 @@
 		</td>
 	</tr>
 <?php endif ?>
-
 </table>
 
+<?php if( isset( $recently_awarded ) && ! empty( $recently_awarded ) ) : ?>
+	<h2>
+		<?php echo Yii::t( 'global', 'Recently Awarded' ) ?>
+	</h2>
+
+	<?php foreach( $recently_awarded as $awarded ) : ?>
+		<?php echo $awarded->user_id ?>
+	<?php endforeach ?>
+<?php endif ?>
