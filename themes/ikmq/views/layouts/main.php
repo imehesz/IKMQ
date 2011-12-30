@@ -74,7 +74,8 @@
                 $play_item,
 				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'Hall Of Fame', 'url'=>array('/game/hof')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
+				array('label' => 'Profile', 'url' => array( '/profile/view', 'id' => $this->anonymous->id ) ),
+				//array('label'=>'Contact', 'url'=>array('/site/contact')),
 			),
 		)); ?>
 
@@ -160,8 +161,8 @@
 <?php endif; ?>
 <h2>Social</h2>
 <ul>
-	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/twitter-bird.gif' ) . ' Twitter', 'http://twitter.com/iknowmyquotes', array( 'target' => '_blank' ) ); ?></li>
-	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_icon.png' ) . ' Facebook', 'http://facebook.com/pages/IKMQ/210513355644472', array( 'target' => '_blank' ) ); ?></li>
+	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/twitter-bird.gif' ) . ' Twitter', 'http://twitter.com/I_Know_Quotes', array( 'target' => '_blank' ) ); ?></li>
+	<li><?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/facebook_icon.png' ) . ' Facebook', 'http://www.facebook.com/pages/IKQ/210513355644472', array( 'target' => '_blank' ) ); ?></li>
 </ul>
 	<h2>Like Us!</h2>
 <ul>
