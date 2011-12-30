@@ -203,9 +203,6 @@
 </div>
 		<div style="clear:both;"></div>
 		<footer id="main-footer">
-			<section id="footer-1">
-				<?php echo CHtml::link( 'mehesz.net', 'http://mehesz.net', array( 'target' => '_blank' )); ?> &copy; <?php echo date( 'Y', time() ); ?>
-			</section>
 			<?php /*
 			<section id="footer-2">
 				Design by <?php echo CHtml::link( 'Webtint', 'http://webtint.net/filebank/html5css3/', array( 'target' => '_blank' ) ); ?>
@@ -213,6 +210,9 @@
 			*/ ?>
 			<section id='footer-2'>
 				<?php echo CHtml::link( CHtml::image( Yii::app()->request->baseUrl . '/images/ikq_logo_75x45.png' ), 'http://iknowquotes.com' ) ?>
+			</section>
+			<section id="footer-1">
+				<?php // echo CHtml::link( 'mehesz.net', 'http://mehesz.net', array( 'target' => '_blank' )); ?> &copy; <?php echo date( 'Y', time() ); ?>
 			</section>
 		</footer>
 	</body>

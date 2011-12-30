@@ -2,7 +2,7 @@
 	<hr />
 	<div style="text-align:center;">
 		<h3>
-				WooHoo! You bacame #1 and received the KING OF QUOTES badge!
+				WooHoo! You became #1 and received the KING OF QUOTES badge!
 		</h3>
 
 		<?php if( ! YII_DEBUG ) : ?>
@@ -10,7 +10,7 @@
 				<table style="width:100%;" cellspacing=20>
 					<tr valign="top">
 						<td valign="top" align="right" width="50%">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/profile/view', array( 'id' => $this->anonymous->id ) ) ?>" data-text="I just received the KING OF QUOTES badge on IKnowQuotes! <?php echo $this->createAbsoluteUrl('/profile/view', array( 'id' => Yii::app()->controller->anonymous->id ) ) ?> #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo Yii::app()->createAbsoluteUrl( '/profile/view', array( 'id' => $this->anonymous->id ) ) ?>" data-text="I just earned the KING OF QUOTES badge on IKnowQuotes.com! Can you? #movies" data-count="none">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 						</td>
 						<td valign="top" align="left" width="50%">
 							<?php /*
