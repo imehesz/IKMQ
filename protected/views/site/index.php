@@ -25,13 +25,13 @@ TWEET
 </p>
 <p>Congratulations! You, through the miraculous ways of the Internet, actually found us!</p>
 
-<p>So what is this? What are we doing here? It is a simple <b>online game</b>. Nothing more, nothing less. It helps you to feel good about yourself ... <b>if you know movies and movie quotes</b>. And who doesn't?</p>
+<p>So what is this? What are we doing here? It is a simple <b>online movie trivia game</b>. Nothing more, nothing less. It helps you to feel good about yourself ... <b>if you know movies and movie quotes</b>. And who doesn't?</p>
 
 <p>So, if you don't like to play or you don't like movies, please kindly ... <i>GET OUT OF HERE!</i></p>
 
 <p><b>If you are ready</b>, head over to the <?php echo CHtml::link( 'about page', Yii::app()->createUrl( '/site/page', array( 'view' => 'about' ) ) ); ?> and read the rules.</p>
 
-<p><i>IKMQ team</i></p>
+<p><i>IKQ team</i></p>
 
 <p>
 	<table cellspacing="10">

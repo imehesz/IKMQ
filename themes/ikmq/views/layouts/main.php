@@ -167,9 +167,24 @@
 	<h2>Like Us!</h2>
 <ul>
 	<li>
+		<!-- Place this tag where you want the +1 button to render -->
+		<div class="g-plusone" data-size="medium" data-annotation="inline" data-width="230" data-href="http://iknowquotes.com"></div>
+
+		<!-- Place this render call where appropriate -->
+		<script type="text/javascript">
+		(function() {
+		 var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		 po.src = 'https://apis.google.com/js/plusone.js';
+		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		 })();
+		</script>
+		<br /> <br />
+	</li>
+	<li>
 <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FIKMQ%2F210513355644472&amp;width=220&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:350px;" allowTransparency="true"></iframe>
 	</li>
 </ul>
+
 
 <h2>Top5 by Score</h2>
 <ul>
