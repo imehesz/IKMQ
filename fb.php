@@ -23,6 +23,7 @@ $app_id = $config['params']['facebook']['app_id'];
 $app_secret = $config['params']['facebook']['app_secret'];
 
 $badge_name = $_GET['badge_name'];
+$badge_name_url = $badge_name;
 $badge_image = $_GET['badge_image'];
 
 if( $badge_name == 'king' )
@@ -61,7 +62,7 @@ EOT;
 $facebook->api("/me/feed", "post", array(
         'message' => "I just earned the `" . strtoupper( $badge_name ) . "` badge on http://IknowQuotes.com. Can you?",
         'picture' => $base_url . '/images/badges/' . $badge_image,
-        'link' => $base_url . '/badge/' . $badge_name,
+        'link' => $base_url . '/badge/' . $badge_name_url,
         'name' => 'IKQ - ' . strtoupper( $badge_name ) . ' BADGE',
         'caption' => "IKQ - I Know Quotes"
 ));
