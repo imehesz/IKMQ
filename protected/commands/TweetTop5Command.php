@@ -22,6 +22,7 @@ EOD;
 					->from('anonymous_user u')
 					->limit(5)
 					->order( 'score DESC' )
+					->group( 'name' )
 					->queryAll();
 
 			if( $top5 && is_array( $top5 ) )
